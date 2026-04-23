@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rasta Strain Bible 🇨🇦</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#D42B2B;--gold:#F5C518;--green:#1E8C3A;--black:#0D0D0D;--dark:#141614;--card:#1a1d19;--border:#2e3328;--text:#e8e8d8;--muted:#7a8068;--sativa:#F5C518;--indica:#9b6dcc;--hybrid-s:#1E8C3A;--hybrid-i:#4ab5b5;--ruderalis:#c4704a;--exotic:#e0507a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--black);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;}
+.rasta-bar{height:6px;background:linear-gradient(90deg,var(--red) 0%,var(--red) 33.3%,var(--gold) 33.3%,var(--gold) 66.6%,var(--green) 66.6%,var(--green) 100%);}
+.rasta-divider{display:flex;height:3px;}.rasta-divider span{flex:1;}.rasta-divider .r{background:var(--red);}.rasta-divider .g{background:var(--gold);}.rasta-divider .gr{background:var(--green);}
+header{padding:38px 20px 26px;text-align:center;position:relative;overflow:hidden;background:var(--dark);border-bottom:2px solid var(--border);}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 20% 50%,rgba(212,43,43,.10) 0%,transparent 70%),radial-gradient(ellipse 60% 60% at 80% 50%,rgba(30,140,58,.10) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 50% -10%,rgba(245,197,24,.09) 0%,transparent 60%);pointer-events:none;}
+.leaf-deco{font-size:2.8rem;display:block;margin-bottom:4px;animation:sway 4s ease-in-out infinite;}
+@keyframes sway{0%,100%{transform:rotate(-4deg);}50%{transform:rotate(4deg);}}
+h1{font-family:'Righteous',sans-serif;font-size:clamp(1.8rem,6vw,3.4rem);letter-spacing:2px;background:linear-gradient(135deg,var(--red) 0%,var(--gold) 45%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:4px;}
+.subtitle{font-size:.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);}
+.canada-badge{display:inline-block;margin-top:8px;font-size:.68rem;padding:4px 12px;border:1px solid var(--green);color:#6dd67a;letter-spacing:2px;font-family:'Righteous',sans-serif;}
+.nav-tabs{display:flex;border-bottom:2px solid var(--border);background:var(--dark);overflow-x:auto;}
+.nav-tab{font-family:'Righteous',sans-serif;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;padding:11px 16px;cursor:pointer;color:var(--muted);border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s;}
+.nav-tab:hover{color:var(--gold);}.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.panel{display:none;}.panel.active{display:block;}
+.controls{padding:13px 20px 4px;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:8px;}
+.search-wrap input{width:100%;background:var(--card);border:2px solid var(--border);color:var(--text);font-family:'Nunito',sans-serif;font-size:.84rem;padding:10px 16px;outline:none;transition:border-color .2s;}
+.search-wrap input:focus{border-color:var(--gold);}.search-wrap input::placeholder{color:var(--muted);}
+.filter-row{display:flex;gap:5px;flex-wrap:wrap;align-items:center;}
+.filter-label{font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-family:'Righteous',sans-serif;margin-right:2px;}
+.filter-btn{border:2px solid var(--border);background:transparent;color:var(--muted);font-family:'Righteous',sans-serif;font-size:.62rem;padding:6px 11px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:all .15s;}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold);}
+.filter-btn.active[data-v="all"]{background:var(--gold);color:#000;border-color:var(--gold);}
+.filter-btn.active[data-v="sativa"]{background:var(--sativa);color:#000;border-color:var(--sativa);}
+.filter-btn.active[data-v="indica"]{background:var(--indica);color:#fff;border-color:var(--indica);}
+.filter-btn.active[data-v="hybrid"]{background:var(--green);color:#fff;border-color:var(--green);}
+.filter-btn.active[data-v="ruderalis"]{background:var(--ruderalis);color:#fff;border-color:var(--ruderalis);}
+.filter-btn.active[data-v="exotic"]{background:var(--exotic);color:#fff;border-color:var(--exotic);}
+.filter-btn.active[data-v="canadian"]{background:#a33030;color:#fff;border-color:#a33030;}
+.filter-btn.active[data-v="beginner"]{background:#2a7a2a;color:#fff;border-color:#2a7a2a;}
+.filter-btn.active[data-v="popular"]{background:#c47a10;color:#fff;border-color:#c47a10;}
+.filter-btn.active[data-v="award"]{background:#8b6914;color:#fff;border-color:#8b6914;}
+.slider-row{display:flex;gap:14px;flex-wrap:wrap;}
+.slider-group{display:flex;flex-direction:column;gap:3px;flex:1;min-width:160px;}
+.slider-group label{font-size:.53rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-family:'Righteous',sans-serif;}
+.slider-group input[type=range]{width:100%;accent-color:var(--gold);}
+.sort-row{display:flex;gap:5px;flex-wrap:wrap;align-items:center;}
+.sort-btn{border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Righteous',sans-serif;font-size:.57rem;padding:5px 9px;cursor:pointer;letter-spacing:.5px;text-transform:uppercase;transition:all .15s;}
+.sort-btn:hover{border-color:var(--gold);color:var(--gold);}
+.sort-btn.active{background:rgba(245,197,24,.1);border-color:var(--gold);color:var(--gold);}
+.count-label{font-size:.62rem;color:var(--muted);text-align:center;padding:7px 0 3px;letter-spacing:2px;text-transform:uppercase;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:2px;max-width:1100px;margin:0 auto;padding:0 20px 60px;}
+.card{background:var(--card);border:2px solid var(--border);cursor:pointer;transition:border-color .2s,transform .15s,box-shadow .2s;overflow:hidden;animation:fadeUp .18s ease both;position:relative;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.card.sativa-card::before{background:var(--sativa);}.card.indica-card::before{background:var(--indica);}
+.card.hybrid-s-card::before{background:var(--green);}.card.hybrid-i-card::before{background:var(--hybrid-i);}
+.card.rude-card::before{background:var(--ruderalis);}.card.exotic-card::before{background:var(--exotic);}
+.card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 32px rgba(245,197,24,.12);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+.card-top{padding:14px 14px 7px;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;}
+.strain-name{font-family:'Righteous',sans-serif;font-size:.97rem;color:#fff;line-height:1.2;}
+.badges{display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0;}
+.type-badge{font-size:.48rem;letter-spacing:1.5px;text-transform:uppercase;padding:2px 6px;border:1px solid;white-space:nowrap;font-family:'Righteous',sans-serif;}
+.type-badge.sativa{color:var(--sativa);border-color:var(--sativa);}.type-badge.indica{color:var(--indica);border-color:var(--indica);}
+.type-badge.hybrid-s{color:#6dd67a;border-color:#6dd67a;}.type-badge.hybrid-i{color:var(--hybrid-i);border-color:var(--hybrid-i);}
+.type-badge.ruderalis{color:var(--ruderalis);border-color:var(--ruderalis);}.type-badge.exotic-b{color:var(--exotic);border-color:var(--exotic);}
+.novice-badge{font-size:.46rem;letter-spacing:1px;text-transform:uppercase;padding:2px 5px;border:1px solid;font-family:'Righteous',sans-serif;white-space:nowrap;}
+.novice-badge.ok{color:#6dd67a;border-color:#6dd67a;}.novice-badge.warn{color:var(--gold);border-color:var(--gold);}.novice-badge.no{color:var(--red);border-color:var(--red);}
+.popular-pill{font-size:.46rem;padding:2px 5px;background:rgba(196,122,16,.15);border:1px solid rgba(196,122,16,.4);color:#e8a030;font-family:'Righteous',sans-serif;letter-spacing:1px;text-transform:uppercase;}
+.card-body{padding:0 13px 38px;}
+.origin-flag{font-size:.6rem;color:var(--muted);margin-bottom:5px;font-style:italic;}
+.time-tags{display:flex;gap:3px;margin-bottom:5px;flex-wrap:wrap;}
+.time-tag{font-size:.52rem;padding:1px 6px;border:1px solid rgba(75,181,181,.3);color:var(--hybrid-i);background:rgba(75,181,181,.07);}
+.effect-tags{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:6px;}
+.tag{font-size:.57rem;padding:2px 5px;background:rgba(30,140,58,.12);border:1px solid rgba(30,140,58,.28);color:#6dd67a;}
+.tag.neg{background:rgba(212,43,43,.1);border-color:rgba(212,43,43,.3);color:#e07070;}
+.tag.method{background:rgba(245,197,24,.08);border-color:rgba(245,197,24,.25);color:var(--gold);}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px;margin-bottom:6px;}
+.stat{font-size:.57rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.stat span{display:block;color:var(--text);font-size:.69rem;font-weight:700;margin-top:1px;text-transform:none;letter-spacing:0;}
+.thc-bar{height:4px;background:var(--border);margin-top:3px;overflow:hidden;border-radius:2px;}
+.thc-fill{height:100%;border-radius:2px;transition:width .6s ease;}
+.terpene-row{display:flex;flex-wrap:wrap;gap:3px;}
+.terp{font-size:.49rem;padding:1px 5px;border-radius:20px;letter-spacing:.3px;}
+.compare-btn{position:absolute;bottom:10px;right:10px;font-size:.49rem;padding:3px 8px;background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.28);color:var(--gold);cursor:pointer;font-family:'Righteous',sans-serif;letter-spacing:.5px;text-transform:uppercase;transition:all .15s;z-index:2;}
+.compare-btn:hover,.compare-btn.selected{background:var(--gold);color:#000;border-color:var(--gold);}
+.compare-bar{position:fixed;bottom:0;left:0;right:0;background:var(--dark);border-top:2px solid var(--gold);padding:9px 18px;z-index:300;display:none;align-items:center;gap:8px;flex-wrap:wrap;}
+.compare-bar.show{display:flex;}
+.compare-bar-title{font-family:'Righteous',sans-serif;font-size:.68rem;color:var(--gold);letter-spacing:1px;}
+.compare-slot{background:var(--card);border:1px solid var(--border);padding:3px 9px;font-size:.63rem;display:flex;align-items:center;gap:6px;}
+.compare-slot .rem{cursor:pointer;color:var(--red);font-size:.9rem;line-height:1;}
+.compare-go-btn{font-family:'Righteous',sans-serif;font-size:.63rem;padding:6px 14px;background:var(--gold);color:#000;border:none;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-left:auto;}
+.detail-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:200;overflow-y:auto;padding:16px 12px;backdrop-filter:blur(6px);}
+.detail-overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+.detail-card{background:var(--dark);border:2px solid var(--gold);max-width:680px;width:100%;margin:auto;padding:26px 20px 20px;position:relative;animation:fadeUp .22s ease;box-shadow:0 0 60px rgba(245,197,24,.10);}
+.detail-rasta-bar{display:flex;height:4px;position:absolute;top:0;left:0;right:0;}
+.detail-rasta-bar span{flex:1;}.detail-rasta-bar .r{background:var(--red);}.detail-rasta-bar .g{background:var(--gold);}.detail-rasta-bar .gr{background:var(--green);}
+.close-btn{position:absolute;top:13px;right:13px;background:none;border:1px solid var(--border);color:var(--muted);font-family:'Righteous',sans-serif;font-size:.64rem;padding:4px 10px;cursor:pointer;letter-spacing:1px;transition:all .15s;}
+.close-btn:hover{border-color:var(--red);color:var(--red);}
+.detail-name{font-family:'Righteous',sans-serif;font-size:clamp(1.3rem,5vw,2rem);color:#fff;margin:9px 0 4px;line-height:1.1;}
+.detail-badges{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:5px;}
+.detail-origin{color:var(--muted);font-size:.66rem;margin-bottom:13px;font-style:italic;}
+.detail-section{margin-bottom:16px;}
+.detail-section h3{font-size:.53rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:7px;padding-bottom:4px;border-bottom:1px solid var(--border);font-family:'Righteous',sans-serif;}
+.detail-text{font-size:.77rem;line-height:1.74;color:var(--text);}
+.detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.detail-stat{background:rgba(245,197,24,.04);border:1px solid var(--border);padding:8px;}
+.detail-stat label{font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;font-family:'Righteous',sans-serif;}
+.detail-stat value{font-size:.79rem;color:var(--gold);font-weight:700;}
+.flavor-tags,.method-tags,.similar-tags{display:flex;flex-wrap:wrap;gap:4px;}
+.flavor-tag{font-size:.6rem;padding:2px 7px;background:rgba(212,43,43,.1);border:1px solid rgba(212,43,43,.25);color:#e07070;}
+.method-tag{font-size:.6rem;padding:2px 7px;background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.25);color:var(--gold);}
+.similar-tag{font-size:.6rem;padding:3px 9px;background:rgba(75,181,181,.08);border:1px solid rgba(75,181,181,.25);color:var(--hybrid-i);cursor:pointer;transition:all .15s;}
+.similar-tag:hover{background:rgba(75,181,181,.2);}
+.award-box{background:rgba(139,105,20,.12);border:1px solid rgba(139,105,20,.4);padding:8px 11px;font-size:.71rem;color:var(--gold);line-height:1.65;}
+.canada-note{background:rgba(30,140,58,.07);border-left:3px solid var(--green);padding:10px 12px;font-size:.71rem;line-height:1.7;color:var(--text);}
+.canada-note strong{color:var(--gold);}
+.novice-box{padding:8px 12px;font-size:.71rem;line-height:1.6;border-left:3px solid;}
+.novice-box.ok{background:rgba(30,140,58,.08);border-color:var(--green);color:#6dd67a;}
+.novice-box.warn{background:rgba(245,197,24,.07);border-color:var(--gold);color:var(--gold);}
+.novice-box.no{background:rgba(212,43,43,.08);border-color:var(--red);color:#e07070;}
+.terp-detail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;}
+.terp-detail-item{border:1px solid var(--border);padding:7px 9px;}
+.terp-detail-item .tn{font-family:'Righteous',sans-serif;font-size:.6rem;letter-spacing:1px;margin-bottom:3px;}
+.terp-detail-item .td{font-size:.59rem;color:var(--muted);line-height:1.5;}
+.time-effect{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.time-effect label{font-size:.58rem;color:var(--muted);width:100px;flex-shrink:0;}
+.time-bar{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.time-fill{height:100%;border-radius:3px;}
+.compare-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:400;overflow-y:auto;padding:18px;backdrop-filter:blur(8px);}
+.compare-overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+.compare-table-wrap{background:var(--dark);border:2px solid var(--gold);max-width:920px;width:100%;margin:auto;padding:22px 18px;animation:fadeUp .22s ease;position:relative;}
+.compare-table-wrap h2{font-family:'Righteous',sans-serif;font-size:1.1rem;color:var(--gold);margin-bottom:14px;letter-spacing:2px;}
+.cmp-table{width:100%;border-collapse:collapse;}
+.cmp-table th{font-family:'Righteous',sans-serif;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:7px 9px;border-bottom:2px solid var(--border);text-align:left;}
+.cmp-table td{font-size:.7rem;padding:6px 9px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top;}
+.cmp-table tr:hover td{background:rgba(245,197,24,.03);}
+.cmp-table td:first-child{color:var(--muted);font-size:.6rem;letter-spacing:.5px;text-transform:uppercase;width:100px;}
+.quiz-panel{max-width:600px;margin:36px auto;padding:0 20px 60px;}
+.quiz-title{font-family:'Righteous',sans-serif;font-size:1.5rem;color:var(--gold);margin-bottom:5px;letter-spacing:2px;}
+.quiz-subtitle{font-size:.73rem;color:var(--muted);margin-bottom:22px;}
+.quiz-step{display:none;}.quiz-step.active{display:block;}
+.quiz-q{font-family:'Righteous',sans-serif;font-size:.98rem;color:#fff;margin-bottom:14px;letter-spacing:1px;}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.quiz-opt{background:var(--card);border:2px solid var(--border);color:var(--text);font-family:'Nunito',sans-serif;font-size:.78rem;padding:12px 14px;cursor:pointer;text-align:left;transition:all .15s;line-height:1.4;}
+.quiz-opt:hover,.quiz-opt.picked{border-color:var(--gold);background:rgba(245,197,24,.08);color:var(--gold);}
+.quiz-progress{display:flex;gap:5px;margin-bottom:18px;}
+.quiz-dot{height:4px;flex:1;background:var(--border);transition:background .3s;}
+.quiz-dot.done{background:var(--gold);}
+.quiz-result{display:none;}.quiz-result.show{display:block;}
+.quiz-result-card{background:var(--card);border:2px solid var(--gold);padding:16px;margin-bottom:10px;cursor:pointer;transition:all .15s;}
+.quiz-result-card:hover{border-color:#fff;}
+.quiz-result-card .qr-name{font-family:'Righteous',sans-serif;font-size:1.05rem;color:var(--gold);margin-bottom:3px;}
+.quiz-result-card .qr-why{font-size:.72rem;color:var(--muted);line-height:1.6;}
+.quiz-restart{font-family:'Righteous',sans-serif;font-size:.68rem;padding:9px 18px;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-top:10px;transition:all .15s;}
+.quiz-restart:hover{border-color:var(--gold);color:var(--gold);}
+.guide-panel{max-width:800px;margin:0 auto;padding:22px 20px 60px;}
+.guide-section{margin-bottom:26px;}
+.guide-section h2{font-family:'Righteous',sans-serif;font-size:.95rem;color:var(--gold);margin-bottom:11px;letter-spacing:2px;padding-bottom:5px;border-bottom:2px solid var(--border);}
+.guide-methods{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:9px;}
+.guide-method{background:var(--card);border:1px solid var(--border);padding:13px;}
+.guide-method .gm-icon{font-size:1.5rem;display:block;margin-bottom:5px;}
+.guide-method .gm-name{font-family:'Righteous',sans-serif;font-size:.78rem;color:var(--gold);margin-bottom:4px;letter-spacing:1px;}
+.guide-method .gm-text{font-size:.7rem;color:var(--text);line-height:1.62;}
+.guide-method .gm-pros{font-size:.63rem;color:#6dd67a;margin-top:5px;}
+.guide-method .gm-cons{font-size:.63rem;color:#e07070;}
+.canada-brands{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:8px;}
+.brand-card{background:var(--card);border:1px solid var(--border);padding:11px 13px;}
+.brand-card .bc-name{font-family:'Righteous',sans-serif;font-size:.83rem;color:var(--gold);margin-bottom:2px;}
+.brand-card .bc-type{font-size:.58rem;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;}
+.brand-card .bc-text{font-size:.68rem;color:var(--text);line-height:1.58;}
+.terp-guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:7px;}
+.tg-item{border:1px solid var(--border);padding:8px 10px;}
+.tg-item .tgn{font-family:'Righteous',sans-serif;font-size:.63rem;letter-spacing:1px;margin-bottom:3px;}
+.tg-item .tgd{font-size:.6rem;color:var(--muted);line-height:1.5;}
+.no-results{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--muted);font-family:'Righteous',sans-serif;font-size:1rem;letter-spacing:2px;}
+</style>
+</head>
+<body>
+<div class="rasta-bar"></div>
+<header>
+  <span class="leaf-deco">&#127807;</span>
+  <h1>RASTA STRAIN BIBLE</h1>
+  <div class="subtitle">Encyclopedia of Cannabis Strains &middot; One Love</div>
+  <div class="canada-badge">&#127809; CANADA &mdash; LEGAL SINCE 2018</div>
+</header>
+<div class="rasta-divider"><span class="r"></span><span class="g"></span><span class="gr"></span></div>
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="showPanel('strains',this)">&#127807; Сорта</button>
+  <button class="nav-tab" onclick="showPanel('quiz',this)">&#10024; Что покурить?</button>
+  <button class="nav-tab" onclick="showPanel('guide',this)">&#128218; Как употреблять</button>
+</div>
+<div id="panel-strains" class="panel active">
+<div class="controls">
+  <div class="search-wrap"><input type="text" id="search" placeholder="Поиск: сорт, терпен, эффект, вкус, новичок, хит, авто, хейз, куш..." oninput="render()"></div>
+  <div class="filter-row">
+    <span class="filter-label">Тип:</span>
+    <button class="filter-btn active" data-g="type" data-v="all" onclick="setFilter('type','all')">Все</button>
+    <button class="filter-btn" data-g="type" data-v="sativa" onclick="setFilter('type','sativa')">Сатива</button>
+    <button class="filter-btn" data-g="type" data-v="indica" onclick="setFilter('type','indica')">Индика</button>
+    <button class="filter-btn" data-g="type" data-v="hybrid" onclick="setFilter('type','hybrid')">Гибрид</button>
+    <button class="filter-btn" data-g="type" data-v="ruderalis" onclick="setFilter('type','ruderalis')">&#9889; Авто</button>
+    <button class="filter-btn" data-g="type" data-v="exotic" onclick="setFilter('type','exotic')">&#128640; Экзотика</button>
+    <button class="filter-btn" data-g="type" data-v="canadian" onclick="setFilter('type','canadian')">&#127809; Канада</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Особое:</span>
+    <button class="filter-btn active" data-g="special" data-v="all" onclick="setFilter('special','all')">Все</button>
+    <button class="filter-btn" data-g="special" data-v="beginner" onclick="setFilter('special','beginner')">&#9989; Новичкам</button>
+    <button class="filter-btn" data-g="special" data-v="popular" onclick="setFilter('special','popular')">&#128293; Популярные</button>
+    <button class="filter-btn" data-g="special" data-v="award" onclick="setFilter('special','award')">&#127942; Победители</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Время:</span>
+    <button class="filter-btn active" data-g="time" data-v="all" onclick="setFilter('time','all')">Любое</button>
+    <button class="filter-btn" data-g="time" data-v="morning" onclick="setFilter('time','morning')">&#9728; Утро</button>
+    <button class="filter-btn" data-g="time" data-v="day" onclick="setFilter('time','day')">&#127774; День</button>
+    <button class="filter-btn" data-g="time" data-v="evening" onclick="setFilter('time','evening')">&#127754; Вечер</button>
+    <button class="filter-btn" data-g="time" data-v="night" onclick="setFilter('time','night')">&#127768; Ночь</button>
+  </div>
+  <div class="slider-row">
+    <div class="slider-group">
+      <label>THC min: <span id="thcMinVal">0</span>%</label>
+      <input type="range" id="thcMin" min="0" max="32" value="0" oninput="document.getElementById('thcMinVal').textContent=this.value;render()">
+    </div>
+    <div class="slider-group">
+      <label>THC max: <span id="thcMaxVal">32</span>%</label>
+      <input type="range" id="thcMax" min="0" max="32" value="32" oninput="document.getElementById('thcMaxVal').textContent=this.value;render()">
+    </div>
+    <div class="slider-group">
+      <label>Устойч. плесень min: <span id="moldVal">1</span>/5</label>
+      <input type="range" id="moldMin" min="1" max="5" value="1" oninput="document.getElementById('moldVal').textContent=this.value;render()">
+    </div>
+  </div>
+  <div class="sort-row">
+    <span class="filter-label">Сорт:</span>
+    <button class="sort-btn active" data-s="name" onclick="setSort('name')">А-Я</button>
+    <button class="sort-btn" data-s="thc_h" onclick="setSort('thc_h')">THC &#8595;</button>
+    <button class="sort-btn" data-s="thc_l" onclick="setSort('thc_l')">THC &#8593;</button>
+    <button class="sort-btn" data-s="yield" onclick="setSort('yield')">Урожай</button>
+    <button class="sort-btn" data-s="diff" onclick="setSort('diff')">Сложность</button>
+    <button class="sort-btn" data-s="onset" onclick="setSort('onset')">Быстрый приход</button>
+    <button class="sort-btn" data-s="mold" onclick="setSort('mold')">Устойчивость</button>
+  </div>
+</div>
+<div class="count-label" id="count"></div>
+<div class="grid" id="grid"></div>
+</div>
+<div id="panel-quiz" class="panel">
+<div class="quiz-panel">
+  <div class="quiz-title">&#10024; ЧТО ПОКУРИТЬ?</div>
+  <div class="quiz-subtitle">Ответь на 4 вопроса — подберём идеальный сорт именно тебе</div>
+  <div class="quiz-progress" id="qprog">
+    <div class="quiz-dot" id="qd0"></div><div class="quiz-dot" id="qd1"></div>
+    <div class="quiz-dot" id="qd2"></div><div class="quiz-dot" id="qd3"></div>
+  </div>
+  <div class="quiz-step active" id="qs0">
+    <div class="quiz-q">Каков твой опыт?</div>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="pickQ(0,'beginner')">&#127793; Новичок<br><small style="color:var(--muted)">Первые разы или мало опыта</small></button>
+      <button class="quiz-opt" onclick="pickQ(0,'intermediate')">&#127807; Средний<br><small style="color:var(--muted)">Курю время от времени</small></button>
+      <button class="quiz-opt" onclick="pickQ(0,'experienced')">&#128293; Опытный<br><small style="color:var(--muted)">Высокая толерантность</small></button>
+      <button class="quiz-opt" onclick="pickQ(0,'any')">&#10067; Без разницы</button>
+    </div>
+  </div>
+  <div class="quiz-step" id="qs1">
+    <div class="quiz-q">Какое настроение / цель?</div>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="pickQ(1,'energy')">&#9889; Энергия и фокус<br><small style="color:var(--muted)">Работа, творчество, спорт</small></button>
+      <button class="quiz-opt" onclick="pickQ(1,'social')">&#127881; Социальное<br><small style="color:var(--muted)">Вечеринка, разговор</small></button>
+      <button class="quiz-opt" onclick="pickQ(1,'relax')">&#128564; Расслабление<br><small style="color:var(--muted)">Диван, фильм, стресс</small></button>
+      <button class="quiz-opt" onclick="pickQ(1,'sleep')">&#127769; Сон / Боль<br><small style="color:var(--muted)">Помочь уснуть, обезболивание</small></button>
+    </div>
+  </div>
+  <div class="quiz-step" id="qs2">
+    <div class="quiz-q">Какое время суток?</div>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="pickQ(2,'morning')">&#9728; Утро</button>
+      <button class="quiz-opt" onclick="pickQ(2,'day')">&#127774; День</button>
+      <button class="quiz-opt" onclick="pickQ(2,'evening')">&#127754; Вечер</button>
+      <button class="quiz-opt" onclick="pickQ(2,'night')">&#127768; Ночь</button>
+    </div>
+  </div>
+  <div class="quiz-step" id="qs3">
+    <div class="quiz-q">Что предпочитаешь по вкусу?</div>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="pickQ(3,'citrus')">&#127818; Цитрус / Фрукты</button>
+      <button class="quiz-opt" onclick="pickQ(3,'sweet')">&#127852; Сладкое / Десерт</button>
+      <button class="quiz-opt" onclick="pickQ(3,'earth')">&#127795; Земля / Хэш / Хвоя</button>
+      <button class="quiz-opt" onclick="pickQ(3,'fuel')">&#9981; Дизель / Химия</button>
+    </div>
+  </div>
+  <div class="quiz-result" id="qresult">
+    <div class="quiz-q" style="margin-bottom:12px">&#127807; Рекомендации для тебя:</div>
+    <div id="qresult-cards"></div>
+    <button class="quiz-restart" onclick="restartQuiz()">&#8635; Пройти снова</button>
+  </div>
+</div>
+</div>
+
+<div id="panel-guide" class="panel">
+<div class="guide-panel">
+  <div class="guide-section">
+    <h2>&#128218; СПОСОБЫ УПОТРЕБЛЕНИЯ</h2>
+    <div class="guide-methods">
+      <div class="guide-method"><span class="gm-icon">&#128684;</span><div class="gm-name">Косяк (Joint)</div><div class="gm-text">Классика. Тонкие бумаги RAW или OCB. Pure (без табака) или спилф (с табаком). Размер влияет на скорость горения. Фильтр-роачи помогают.</div><div class="gm-pros">+ Просто, социально, без оборудования</div><div class="gm-cons">- Теряется часть THC при горении, сильный запах</div></div>
+      <div class="guide-method"><span class="gm-icon">&#128166;</span><div class="gm-name">Бонг (Bong)</div><div class="gm-text">Вода охлаждает и фильтрует дым. Удар сильнее и резче. Стеклянный бонг оптимален. Меняй воду регулярно.</div><div class="gm-pros">+ Мощный эффект, мягче для лёгких</div><div class="gm-cons">- Громоздко, нужна уборка, немобильно</div></div>
+      <div class="guide-method"><span class="gm-icon">&#127466;&#127464;</span><div class="gm-name">Вапорайзер</div><div class="gm-text">Нагревает до 170–210°C без сгорания. Меньше смол, сохраняет терпены. Настольные (Volcano, Mighty) или портативные (Pax, Arizer).</div><div class="gm-pros">+ Здоровее, чище вкус, дискретно</div><div class="gm-cons">- Дорого, нужна зарядка</div></div>
+      <div class="guide-method"><span class="gm-icon">&#129365;</span><div class="gm-name">Трубка (Pipe)</div><div class="gm-text">Компактно. Чиллум — прямая трубка, pipe — с чашей. Дым горячее, нет водяной фильтрации. Требует чистки.</div><div class="gm-pros">+ Компактно, быстро</div><div class="gm-cons">- Горячий дым, нужна частая чистка</div></div>
+      <div class="guide-method"><span class="gm-icon">&#127850;</span><div class="gm-name">Съедобные (Edibles)</div><div class="gm-text">Печенье, конфеты, шоколад, капсулы. Эффект через 30–90 минут, длится 4–8 часов. Начинай с 2.5–5mg THC. Очень легко передозировать!</div><div class="gm-pros">+ Долгий эффект, нет дыма</div><div class="gm-cons">- Медленный старт, легко перебрать</div></div>
+      <div class="guide-method"><span class="gm-icon">&#128680;</span><div class="gm-name">Даб (Концентраты)</div><div class="gm-text">Воск, шаттер, рошин нагреваются на раскалённом nail. THC 60–90%. Только для очень опытных. Продаётся в диспансерах по Cannabis Act.</div><div class="gm-pros">+ Мгновенный, сильный эффект</div><div class="gm-cons">- Экстремально, дорогое оборудование</div></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <h2>&#127809; КАНАДСКИЕ БРЕНДЫ</h2>
+    <div class="canada-brands">
+      <div class="brand-card"><div class="bc-name">Tweed</div><div class="bc-type">Canopy Growth</div><div class="bc-text">Один из первых лицензированных производителей. Широкий ассортимент, доступен во всех провинциях через OCS, BC Cannabis.</div></div>
+      <div class="brand-card"><div class="bc-name">Pure Sunfarms</div><div class="bc-type">BC — Топ продаж</div><div class="bc-text">Лучший по цена/качество в BC. Теплицы в Delta. Регулярно в топе продаж OCS и BC Cannabis Stores.</div></div>
+      <div class="brand-card"><div class="bc-name">7ACRES</div><div class="bc-type">Craft Premium Ontario</div><div class="bc-text">Крафтовый премиум из Ontario. Известен Jack Haze и Sensi Star. Ценится за качество отделки шишек.</div></div>
+      <div class="brand-card"><div class="bc-name">Redecan</div><div class="bc-type">Ontario — Value</div><div class="bc-text">Самый продаваемый бренд на OCS несколько лет. Стабильное качество по доступной цене. Специализация — pre-rolls.</div></div>
+      <div class="brand-card"><div class="bc-name">BZAM / TGOD</div><div class="bc-type">Органика Ontario</div><div class="bc-text">Органическое выращивание без пестицидов. Популярен среди ценителей чистого продукта.</div></div>
+      <div class="brand-card"><div class="bc-name">FIGR</div><div class="bc-type">PEI — Craft</div><div class="bc-text">Крафт с острова Принца Эдуарда. Уникальные сорта, ручная обрезка. Небольшие партии, высокое качество.</div></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <h2>&#127808; ТЕРПЕНЫ — СПРАВОЧНИК</h2>
+    <div class="terp-guide-grid">
+      <div class="tg-item"><div class="tgn" style="color:#e8a030">Myrcene</div><div class="tgd">Землистый, травяной. Усиливает sedative-эффект. Манго, лемонграсс.</div></div>
+      <div class="tg-item"><div class="tgn" style="color:#f5c518">Limonene</div><div class="tgd">Цитрусовый. Антидепрессант, анксиолитик. Лимон, апельсин.</div></div>
+      <div class="tg-item"><div class="tgn" style="color:#9b6dcc">Caryophyllene</div><div class="tgd">Пряный, перечный. CB2-рецепторы. Противовоспалительный. Перец, гвоздика.</div></div>
+      <div class="tg-item"><div class="tgn" style="color:#6dd67a">Pinene</div><div class="tgd">Хвойный. Улучшает память, бронходилататор. Сосна, розмарин.</div></div>
+      <div class="tg-item"><div class="tgn" style="color:#4ab5b5">Linalool</div><div class="tgd">Цветочный, лавандовый. Анксиолитик, седативный. Лаванда.</div></div>
+      <div class="tg-item"><div class="tgn" style="color:#e07070">Terpinolene</div><div class="tgd">Свежий, цветочный. Антиоксидант, лёгкий седативный. Яблоко, сирень.</div></div>
+      <div class="tg-item"><div class="tgn" style="color:#c4704a">Ocimene</div><div class="tgd">Сладкий, тропический. Антивирусный. Базилик, манго.</div></div>
+      <div class="tg-item"><div class="tgn" style="color:#d4c060">Humulene</div><div class="tgd">Землистый, хмелевой. Подавляет аппетит, противовоспалительный. Хмель.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="compare-bar" id="comparebar">
+  <span class="compare-bar-title">&#9878; СРАВНЕНИЕ</span>
+  <div id="compare-slots" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+  <button class="compare-go-btn" onclick="openCompare()">Сравнить &#8594;</button>
+  <button class="compare-go-btn" style="background:transparent;color:var(--muted);border:1px solid var(--border);margin-left:6px" onclick="clearCompare()">&#10005;</button>
+</div>
+
+<div class="detail-overlay" id="overlay" onclick="closeOv(event)">
+  <div class="detail-card" id="detail"></div>
+</div>
+
+<div class="compare-overlay" id="compareoverlay" onclick="closeCompareOv(event)">
+  <div class="compare-table-wrap">
+    <button class="close-btn" onclick="closeCompareOv()">&#10005;</button>
+    <h2>&#9878; СРАВНЕНИЕ СОРТОВ</h2>
+    <div style="overflow-x:auto"><table class="cmp-table" id="cmptable"></table></div>
+  </div>
+</div>
+<script>
+var TC={'Myrcene':'#e8a030','Limonene':'#f5c518','Caryophyllene':'#9b6dcc','Pinene':'#6dd67a','Linalool':'#4ab5b5','Terpinolene':'#e07070','Ocimene':'#c4704a','Humulene':'#d4c060'};
+var TL={'morning':'☀️ Утро','day':'🌞 День','evening':'🌆 Вечер','night':'🌙 Ночь'};
+var TDesc={'Myrcene':'Землистый, расслабляющий, sedative-эффект. Манго, лемонграсс.','Limonene':'Цитрусовый, бодрящий, anti-anxiety. Лимон, апельсин.','Caryophyllene':'Пряный, перечный. Единственный терпен, связывающий CB2-рецепторы. Противовоспалительный.','Pinene':'Хвойный. Улучшает память, бронходилататор. Сосна, розмарин.','Linalool':'Цветочный, лавандовый. Анксиолитик, седативный. Лаванда.','Terpinolene':'Свежий, цветочный. Антиоксидант, лёгкий седативный. Яблоко, сирень.','Ocimene':'Сладкий, тропический. Антивирусный. Базилик, манго.','Humulene':'Землистый, хмелевой. Подавляет аппетит, противовоспалительный.'};
+var S=[
+{n:"Sour Diesel",t:"sativa",d:null,ex:false,pop:true,ca:false,or:"США, Нью-Йорк",pa:"Chemdawg 91 × Super Skunk",thc:[18,26],cbd:[0.1,0.2],nv:"warn",ti:["morning","day"],on:3,du:2.5,mo:2,ef:["Энергия","Эйфория","Творчество","Разговорчивость"],ng:["Сухость рта","Тревога при передозе"],fl:["Дизель","Цитрус","Земля"],tp:["Myrcene","Limonene","Caryophyllene"],md:["Депрессия","Усталость","Стресс"],mt:["Косяк","Бонг","Вапорайзер"],aw:["High Times Cannabis Cup — номинант"],si:["Jack Herer","Green Crack","Trainwreck"],yi:"450-550 г/м²",yo:"700 г/куст",fl2:"10-11 нед",ht:"150-200 см",di:"Средний",dn:2,yn:500,de:"Резкий дизельно-цитрусовый аромат — визитная карточка. Мощный сативный подъём: прилив энергии и вдохновения. Долгое цветение, любит тепло. Один из культовых нью-йоркских сортов 90-х."},
+{n:"Jack Herer",t:"sativa",d:null,ex:false,pop:true,ca:false,or:"Нидерланды, Амстердам",pa:"Haze × Red Skunk × NL #5",thc:[15,24],cbd:[0.03,0.1],nv:"ok",ti:["morning","day"],on:5,du:2,mo:3,ef:["Энергия","Фокус","Счастье","Творчество"],ng:["Тревога при передозе","Сухость рта"],fl:["Сосна","Специи","Земля"],tp:["Terpinolene","Pinene","Myrcene"],md:["Депрессия","СДВГ","Стресс"],mt:["Косяк","Бонг","Вапорайзер"],aw:["High Times Cannabis Cup — победитель (многократно)","Sativa Cup — победитель"],si:["Super Silver Haze","Green Crack","Sour Diesel"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"8-10 нед",ht:"130-180 см",di:"Средний",dn:2,yn:450,de:"Назван в честь легендарного конопляного активиста. Многократный победитель Cannabis Cup. Кристально чистый поднимающий эффект. Идеален для дня и творческой работы."},
+{n:"Amnesia Haze",t:"sativa",d:null,ex:false,pop:true,ca:false,or:"Нидерланды, Амстердам",pa:"Jamaican × South Asian × Hawaiian Haze",thc:[20,25],cbd:[0.1,0.2],nv:"no",ti:["day","evening"],on:3,du:3,mo:2,ef:["Эйфория","Энергия","Психоделика","Творчество"],ng:["Тревога","Паранойя","Дезориентация"],fl:["Лимон","Земля","Цветы"],tp:["Terpinolene","Myrcene","Ocimene"],md:["Депрессия","ПТСР","Творческий блок"],mt:["Косяк","Бонг","Вапорайзер"],aw:["High Times Cannabis Cup — Sativa №1 (2004)","Highlife Cup — победитель"],si:["Super Silver Haze","Super Lemon Haze","Durban Poison"],yi:"500-600 г/м²",yo:"650 г/куст",fl2:"10-13 нед",ht:"150-200 см",di:"Сложный",dn:3,yn:550,de:"Культовый хейз с победами на Cannabis Cup. Очень долгое цветение, но феноменальный психоактивный эффект — мощная эйфория и лёгкий психоделический оттенок. Не для начинающих."},
+{n:"Durban Poison",t:"sativa",d:null,ex:false,pop:true,ca:false,or:"ЮАР, Дурбан",pa:"Африканский лэндрейс",thc:[15,25],cbd:[0.1,0.2],nv:"warn",ti:["morning","day"],on:4,du:2,mo:4,ef:["Энергия","Фокус","Эйфория","Ясность ума"],ng:["Тревога","Сухость рта"],fl:["Анис","Лакрица","Сосна","Мята"],tp:["Terpinolene","Myrcene","Ocimene"],md:["Депрессия","СДВГ","Усталость"],mt:["Косяк","Бонг","Вапорайзер"],aw:[],si:["Green Crack","Jack Herer","Sour Diesel"],yi:"400-500 г/м²",yo:"500+ г/куст",fl2:"8-9 нед",ht:"130-180 см",di:"Средний",dn:2,yn:450,de:"Чистый африканский лэндрейс-сатива. Необычный анисово-мятный вкус. Очень функциональный, стимулирующий эффект."},
+{n:"Super Silver Haze",t:"sativa",d:null,ex:false,pop:true,ca:false,or:"Нидерланды, Амстердам",pa:"Skunk #1 × NL × Haze",thc:[18,23],cbd:[0.1,0.2],nv:"warn",ti:["morning","day"],on:4,du:2.5,mo:2,ef:["Энергия","Эйфория","Творчество","Мотивация"],ng:["Тревога","Сухость рта"],fl:["Цитрус","Специи","Земля"],tp:["Myrcene","Limonene","Caryophyllene"],md:["Депрессия","Усталость","Стресс"],mt:["Косяк","Бонг","Вапорайзер"],aw:["High Times Cannabis Cup — 1 место 3 года (1997-1999)"],si:["Jack Herer","Amnesia Haze","Lemon Haze"],yi:"450-550 г/м²",yo:"600 г/куст",fl2:"9-11 нед",ht:"140-200 см",di:"Средний",dn:2,yn:500,de:"Трижды победитель High Times Cannabis Cup подряд. Мощная долгая энергетическая сатива. Резкий лимонно-специйный аромат."},
+{n:"Strawberry Cough",t:"sativa",d:null,ex:false,pop:false,ca:false,or:"США, Вермонт",pa:"Strawberry Fields × Haze",thc:[15,25],cbd:[0.1,0.3],nv:"ok",ti:["day","evening"],on:5,du:2,mo:3,ef:["Эйфория","Счастье","Разговорчивость","Энергия"],ng:["Кашель","Тревога"],fl:["Клубника","Ягоды","Земля"],tp:["Myrcene","Caryophyllene","Terpinolene"],md:["Стресс","Депрессия","Социальная тревога"],mt:["Косяк","Бонг","Трубка"],aw:[],si:["Blue Dream","Pineapple Express","Lemon Haze"],yi:"350-450 г/м²",yo:"450 г/куст",fl2:"8-9 нед",ht:"130-170 см",di:"Средний",dn:2,yn:400,de:"Кристально чистый клубничный аромат. Заставляет кашлять даже опытных. Лёгкий, поднимающий, социальный эффект. Отлично для вечеринок."},
+{n:"Trainwreck",t:"sativa",d:null,ex:false,pop:false,ca:false,or:"США, Северная Калифорния",pa:"Mexican × Thai × Afghani",thc:[18,25],cbd:[0.1,0.2],nv:"warn",ti:["day"],on:3,du:2.5,mo:3,ef:["Эйфория","Энергия","Творчество","Расслабление тела"],ng:["Паранойя","Тревога","Сухость рта"],fl:["Сосна","Лимон","Специи","Земля"],tp:["Terpinolene","Pinene","Myrcene"],md:["Боль","ПТСР","Стресс"],mt:["Косяк","Бонг","Вапорайзер"],aw:[],si:["Sour Diesel","OG Kush","Jack Herer"],yi:"500-600 г/м²",yo:"700 г/куст",fl2:"8-10 нед",ht:"150-180 см",di:"Средний",dn:2,yn:550,de:"Мощный как товарный поезд. Резкий сосново-цитрусовый аромат. Быстрый мозговой удар эйфории с постепенным расслаблением тела."},
+{n:"Lemon Haze",t:"sativa",d:null,ex:false,pop:false,ca:false,or:"Нидерланды, Амстердам",pa:"Silver Haze × Lemon Skunk",thc:[17,25],cbd:[0.1,0.3],nv:"ok",ti:["morning","day"],on:5,du:2,mo:3,ef:["Энергия","Счастье","Творчество","Эйфория"],ng:["Сухость рта","Тревога"],fl:["Лимон","Цитрус","Специи"],tp:["Limonene","Terpinolene","Myrcene"],md:["Депрессия","Усталость","Стресс"],mt:["Косяк","Вапорайзер","Трубка"],aw:[],si:["Super Lemon Haze","Amnesia Haze","Super Silver Haze"],yi:"500-600 г/м²",yo:"600 г/куст",fl2:"8-9 нед",ht:"120-180 см",di:"Лёгкий",dn:1,yn:550,de:"Яркий бодрящий лимонный аромат. Один из самых ароматных сортов в категории сатива. Чистый подъём настроения без тяжести."},
+{n:"Northern Lights",t:"indica",d:null,ex:false,pop:true,ca:false,or:"США → Нидерланды",pa:"Afghani landrace",thc:[16,21],cbd:[0.1,0.3],nv:"ok",ti:["evening","night"],on:10,du:3,mo:5,ef:["Расслабление","Сонливость","Снятие боли","Спокойствие"],ng:["Сонливость","Сухость рта"],fl:["Сладость","Земля","Сосна"],tp:["Myrcene","Caryophyllene","Linalool"],md:["Бессонница","Боль","Тревога","Спазмы"],mt:["Косяк","Бонг","Трубка","Съедобные"],aw:["High Times Cannabis Cup — победитель (1988-1990)"],si:["Afghan Kush","Bubba Kush","Purple Kush"],yi:"400-500 г/м²",yo:"550 г/куст",fl2:"7-8 нед",ht:"100-120 см",di:"Лёгкий",dn:1,yn:450,de:"Один из самых известных чистых indica-сортов всех времён. Короткое цветение, простота выращивания. Глубокое физическое расслабление, снятие боли и бессонницы."},
+{n:"Purple Kush",t:"indica",d:null,ex:false,pop:true,ca:false,or:"США, Окленд, Калифорния",pa:"Hindu Kush × Purple Afghani",thc:[17,22],cbd:[0.1,0.1],nv:"ok",ti:["evening","night"],on:10,du:3.5,mo:4,ef:["Расслабление","Сонливость","Счастье","Обезболивание"],ng:["Сонливость","Сухость рта","Ступор"],fl:["Виноград","Земля","Сладость","Цветы"],tp:["Myrcene","Linalool","Caryophyllene"],md:["Бессонница","Боль","Тревога"],mt:["Косяк","Бонг","Съедобные","Трубка"],aw:[],si:["Granddaddy Purple","Northern Lights","Bubba Kush"],yi:"350-450 г/м²",yo:"400 г/куст",fl2:"7-8 нед",ht:"60-100 см",di:"Лёгкий",dn:1,yn:400,de:"Знаменитые фиолетовые шишки — антоцианы при низких температурах. Один из красивейших сортов. Мощный indica-эффект для сна и расслабления."},
+{n:"Granddaddy Purple",t:"indica",d:null,ex:false,pop:true,ca:false,or:"США, Калифорния",pa:"Purple Urkle × Big Bud",thc:[17,23],cbd:[0.1,0.2],nv:"ok",ti:["evening","night"],on:10,du:3.5,mo:4,ef:["Расслабление","Сонливость","Эйфория","Обезболивание"],ng:["Сонливость","Сухость рта","Ступор"],fl:["Виноград","Ягоды","Сладость","Земля"],tp:["Myrcene","Linalool","Pinene"],md:["Бессонница","Боль","Депрессия"],mt:["Косяк","Бонг","Съедобные"],aw:[],si:["Purple Kush","Northern Lights","Blueberry"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"7-8 нед",ht:"90-120 см",di:"Лёгкий",dn:1,yn:450,de:"Легенда Западного побережья. Ягодно-виноградный аромат, фиолетовые шишки. Идеален для вечернего расслабления и борьбы с болью."},
+{n:"Blueberry",t:"indica",d:null,ex:false,pop:true,ca:false,or:"США, Орегон",pa:"Thai × Purple Thai × Afghani",thc:[15,20],cbd:[0.1,0.3],nv:"ok",ti:["evening","night"],on:12,du:3,mo:3,ef:["Расслабление","Эйфория","Счастье","Снятие боли"],ng:["Сонливость","Сухость рта"],fl:["Черника","Ягоды","Ваниль","Цветы"],tp:["Myrcene","Caryophyllene","Linalool"],md:["Боль","Стресс","Депрессия"],mt:["Косяк","Бонг","Вапорайзер","Съедобные"],aw:["High Times Cannabis Cup — лучший Indica (2000)"],si:["Blue Dream","Granddaddy Purple","Purple Kush"],yi:"350-450 г/м²",yo:"500 г/куст",fl2:"7-9 нед",ht:"80-120 см",di:"Средний",dn:2,yn:400,de:"Легендарный сорт DJ Short. Сладкий черничный аромат. Расслабляющий тёплый эффект. Предок множества современных гибридов."},
+{n:"Bubba Kush",t:"indica",d:null,ex:false,pop:true,ca:false,or:"США, Лос-Анджелес",pa:"OG Kush × Afghani",thc:[14,22],cbd:[0.1,0.2],nv:"warn",ti:["evening","night"],on:10,du:4,mo:4,ef:["Расслабление","Сонливость","Обезболивание","Голод"],ng:["Сонливость","Сухость рта","Ступор"],fl:["Шоколад","Кофе","Специи","Земля"],tp:["Myrcene","Caryophyllene","Limonene"],md:["Бессонница","Боль","Отсутствие аппетита"],mt:["Бонг","Трубка","Съедобные"],aw:[],si:["OG Kush","Northern Lights","Afghan Kush"],yi:"350-400 г/м²",yo:"450 г/куст",fl2:"7-9 нед",ht:"90-110 см",di:"Лёгкий",dn:1,yn:375,de:"Классика лос-анджелесского кушевого дерева. Тяжёлый couchlock-эффект. Шоколадно-кофейный аромат. Медицинский стандарт для борьбы с болью и бессонницей."},
+{n:"Afghan Kush",t:"indica",d:null,ex:false,pop:false,ca:false,or:"Афганистан, горы Гиндукуш",pa:"Горный лэндрейс",thc:[16,20],cbd:[0.5,1],nv:"ok",ti:["evening","night"],on:12,du:4,mo:5,ef:["Расслабление","Сонливость","Обезболивание","Покой"],ng:["Сонливость","Ступор"],fl:["Земля","Дерево","Хэш","Специи"],tp:["Myrcene","Pinene","Caryophyllene"],md:["Боль","Бессонница","Мышечные спазмы"],mt:["Бонг","Трубка","Чиллум"],aw:[],si:["Northern Lights","Bubba Kush","Black Domina"],yi:"400-500 г/м²",yo:"550 г/куст",fl2:"7-8 нед",ht:"80-100 см",di:"Лёгкий",dn:1,yn:450,de:"Прямой потомок горного лэндрейса Гиндукуша. Прародитель всей современной индики. Хэшевый аромат, мощная смола. Легко выращивать."},
+{n:"Black Domina",t:"indica",d:null,ex:false,pop:false,ca:false,or:"Нидерланды (Sensi Seeds)",pa:"NL × Afghani × Canadian × Hash Plant",thc:[16,22],cbd:[0.1,0.2],nv:"warn",ti:["evening","night"],on:10,du:4,mo:4,ef:["Расслабление","Сонливость","Обезболивание","Спокойствие"],ng:["Ступор","Сонливость","Сухость рта"],fl:["Земля","Хэш","Специи","Дерево"],tp:["Myrcene","Pinene","Caryophyllene"],md:["Боль","Бессонница","Воспаления"],mt:["Бонг","Трубка","Съедобные"],aw:[],si:["Afghan Kush","Northern Lights","Bubba Kush"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"7-8 нед",ht:"80-110 см",di:"Лёгкий",dn:1,yn:450,de:"Названа за тёмно-зелёные почти чёрные листья. Мощный медицинский indica-эффект. Быстрое цветение, высокая устойчивость к болезням."},
+{n:"Blue Dream",t:"hybrid",d:"sativa",ex:false,pop:true,ca:false,or:"США, Санта-Круз, Калифорния",pa:"Blueberry × Haze",thc:[17,24],cbd:[0.1,0.2],nv:"ok",ti:["morning","day","evening"],on:5,du:2.5,mo:3,ef:["Эйфория","Творчество","Расслабление","Энергия"],ng:["Сухость рта","Паранойя (редко)"],fl:["Черника","Ваниль","Земля"],tp:["Myrcene","Caryophyllene","Pinene"],md:["Депрессия","Боль","Тревога","Стресс"],mt:["Косяк","Бонг","Вапорайзер","Съедобные"],aw:["Leafly — самый популярный сорт США (несколько лет)"],si:["Pineapple Express","Strawberry Cough","Blueberry"],yi:"400-500 г/м²",yo:"600 г/куст",fl2:"9-10 нед",ht:"120-180 см",di:"Лёгкий",dn:1,yn:500,de:"Один из самых популярных сортов в мире. Мозговой подъём от хейза + мягкое расслабление от Blueberry. Идеален для дневного применения."},
+{n:"White Widow",t:"hybrid",d:"sativa",ex:false,pop:true,ca:false,or:"Нидерланды, Амстердам",pa:"Brazilian Sativa × South Indian Indica",thc:[18,25],cbd:[0.1,0.3],nv:"ok",ti:["day","evening"],on:5,du:2,mo:4,ef:["Эйфория","Энергия","Творчество","Разговорчивость"],ng:["Сухость рта","Головная боль (редко)"],fl:["Земля","Дерево","Специи"],tp:["Caryophyllene","Myrcene","Limonene"],md:["Депрессия","Тревога","Боль"],mt:["Косяк","Бонг","Вапорайзер"],aw:["High Times Cannabis Cup — победитель (1995)"],si:["AK-47","Blue Dream","Jack Herer"],yi:"450-500 г/м²",yo:"600 г/куст",fl2:"8-9 нед",ht:"100-130 см",di:"Лёгкий",dn:1,yn:475,de:"Классика Amsterdam coffee shop. Белые кристаллы трихомов дали имя. Мощный поднимающий эффект. Один из первых коммерческих гибридов."},
+{n:"AK-47",t:"hybrid",d:"sativa",ex:false,pop:true,ca:false,or:"Нидерланды (Serious Seeds)",pa:"Colombian × Mexican × Thai × Afghani",thc:[15,22],cbd:[0.1,1.5],nv:"warn",ti:["day","evening"],on:5,du:2.5,mo:3,ef:["Расслабление","Счастье","Творчество","Эйфория"],ng:["Сухость рта","Тревога"],fl:["Земля","Цветы","Специи"],tp:["Myrcene","Caryophyllene","Limonene"],md:["Стресс","Депрессия","Тревога","Боль"],mt:["Косяк","Бонг","Вапорайзер","Трубка"],aw:["High Times Cannabis Cup — победитель (1992, 1999)"],si:["White Widow","Blue Dream","Super Silver Haze"],yi:"350-500 г/м²",yo:"500 г/куст",fl2:"7-9 нед",ht:"90-150 см",di:"Средний",dn:2,yn:425,de:"Несмотря на агрессивное название, эффект мягкий и долгий. Классический сатива-гибрид. Множественные победы на Cannabis Cup."},
+{n:"Pineapple Express",t:"hybrid",d:"sativa",ex:false,pop:true,ca:false,or:"США, Калифорния",pa:"Trainwreck × Hawaiian",thc:[17,25],cbd:[0.1,0.2],nv:"ok",ti:["day","evening"],on:6,du:2,mo:3,ef:["Энергия","Эйфория","Творчество","Расслабление"],ng:["Сухость рта","Тревога (редко)"],fl:["Ананас","Кедр","Специи","Цитрус"],tp:["Ocimene","Myrcene","Caryophyllene"],md:["Стресс","Депрессия","Боль"],mt:["Косяк","Бонг","Вапорайзер"],aw:[],si:["Blue Dream","Mimosa","Strawberry Cough"],yi:"450-550 г/м²",yo:"600 г/куст",fl2:"7-9 нед",ht:"120-160 см",di:"Лёгкий",dn:1,yn:500,de:"Знаменит благодаря одноимённому фильму. Яркий тропический аромат. Бодрящий позитивный эффект."},
+{n:"Super Lemon Haze",t:"hybrid",d:"sativa",ex:false,pop:true,ca:false,or:"Нидерланды, Амстердам",pa:"Lemon Skunk × Super Silver Haze",thc:[16,25],cbd:[0.1,0.2],nv:"warn",ti:["morning","day"],on:4,du:2.5,mo:3,ef:["Энергия","Эйфория","Счастье","Творчество"],ng:["Тревога","Сухость рта"],fl:["Лимон","Цедра","Специи","Сладость"],tp:["Limonene","Terpinolene","Myrcene"],md:["Депрессия","Усталость","Стресс"],mt:["Косяк","Бонг","Вапорайзер"],aw:["High Times Cannabis Cup — 1 место Sativa (2008, 2009)"],si:["Lemon Haze","Amnesia Haze","Super Silver Haze"],yi:"500-600 г/м²",yo:"700 г/куст",fl2:"9-10 нед",ht:"130-180 см",di:"Средний",dn:2,yn:550,de:"Двукратный победитель High Times Cannabis Cup. Взрывной лимонный аромат. Мощный бодрящий сативный эффект."},
+{n:"Green Crack",t:"hybrid",d:"sativa",ex:false,pop:true,ca:false,or:"США, Калифорния",pa:"Skunk #1 × Afghani",thc:[16,24],cbd:[0.1,0.1],nv:"warn",ti:["morning","day"],on:3,du:2,mo:3,ef:["Энергия","Фокус","Эйфория","Мотивация"],ng:["Тревога","Паранойя","Сухость рта"],fl:["Манго","Цитрус","Земля"],tp:["Myrcene","Ocimene","Caryophyllene"],md:["СДВГ","Депрессия","Усталость"],mt:["Косяк","Вапорайзер","Бонг"],aw:[],si:["Sour Diesel","Jack Herer","Durban Poison"],yi:"450-550 г/м²",yo:"600 г/куст",fl2:"7-9 нед",ht:"130-170 см",di:"Лёгкий",dn:1,yn:500,de:"Провокационное название дал Snoop Dogg. Невероятно энергизирующий эффект. Тропический манговый аромат. Не для вечернего применения."},
+{n:"Mimosa",t:"hybrid",d:"sativa",ex:false,pop:true,ca:false,or:"США, Калифорния",pa:"Purple Punch × Clementine",thc:[19,27],cbd:[0.1,0.2],nv:"warn",ti:["morning","day"],on:5,du:2,mo:3,ef:["Энергия","Эйфория","Фокус","Счастье"],ng:["Тревога","Сухость рта"],fl:["Апельсин","Цитрус","Тропик","Сладость"],tp:["Limonene","Caryophyllene","Myrcene"],md:["Депрессия","Усталость","Стресс"],mt:["Косяк","Вапорайзер","Бонг"],aw:[],si:["Pineapple Express","Super Lemon Haze","Lemon Haze"],yi:"400-500 г/м²",yo:"550 г/куст",fl2:"8-9 нед",ht:"120-160 см",di:"Средний",dn:2,yn:450,de:"Назван в честь коктейля. Яркий цитрусово-тропический аромат. Бодрящий дневной эффект без тяжести."},
+{n:"Runtz",t:"hybrid",d:"sativa",ex:false,pop:true,ca:false,or:"США, Лос-Анджелес",pa:"Zkittlez × Gelato",thc:[19,29],cbd:[0.1,0.2],nv:"warn",ti:["day","evening"],on:5,du:2.5,mo:3,ef:["Эйфория","Расслабление","Счастье","Творчество"],ng:["Сухость рта","Паранойя"],fl:["Конфеты","Фрукты","Тропик","Сладость"],tp:["Limonene","Caryophyllene","Linalool"],md:["Тревога","Депрессия","Стресс"],mt:["Косяк","Бонг","Вапорайзер"],aw:["Leafly Strain of the Year (2020)"],si:["Zkittlez","Gelato","Pineapple Express"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"8-9 нед",ht:"100-150 см",di:"Средний",dn:2,yn:450,de:"Один из самых хайповых сортов последних лет. Невероятно сладкий аромат. Сбалансированный гибридный эффект с выраженной эйфорией."},
+{n:"Bruce Banner",t:"hybrid",d:"sativa",ex:false,pop:false,ca:false,or:"США, Колорадо",pa:"OG Kush × Strawberry Diesel",thc:[24,30],cbd:[0.1,0.2],nv:"no",ti:["day"],on:3,du:3,mo:3,ef:["Эйфория","Энергия","Творчество","Расслабление"],ng:["Паранойя","Тревога","Сухость рта"],fl:["Дизель","Клубника","Земля","Сладость"],tp:["Caryophyllene","Limonene","Myrcene"],md:["Депрессия","Стресс","ПТСР"],mt:["Вапорайзер","Бонг","Съедобные"],aw:["High Times Cannabis Cup Colorado 2013"],si:["Gorilla Glue #4","Chemdawg","OG Kush"],yi:"500-600 г/м²",yo:"600 г/куст",fl2:"8-10 нед",ht:"100-150 см",di:"Средний",dn:2,yn:550,de:"Назван в честь альтер-эго Халка. THC до 30%, один из мощнейших гибридов. Начинается с мощного мозгового взрыва, затем расслабление тела."},
+{n:"OG Kush",t:"hybrid",d:"indica",ex:false,pop:true,ca:false,or:"США, Флорида → Лос-Анджелес",pa:"Chemdawg × Lemon Thai × Hindu Kush",thc:[19,26],cbd:[0.1,0.3],nv:"warn",ti:["evening","night"],on:5,du:3,mo:2,ef:["Расслабление","Эйфория","Сонливость","Голод"],ng:["Сухость глаз","Паранойя","Тревога"],fl:["Земля","Сосна","Лимон","Специи"],tp:["Myrcene","Limonene","Caryophyllene"],md:["Боль","Тревога","Стресс","Бессонница"],mt:["Косяк","Бонг","Трубка","Съедобные"],aw:["Iconic West Coast — культовый статус"],si:["Chemdawg","Girl Scout Cookies","Bubba Kush"],yi:"350-450 г/м²",yo:"500 г/куст",fl2:"8-9 нед",ht:"90-130 см",di:"Средний",dn:2,yn:400,de:"Культовый сорт, основа многих современных гибридов. Тяжёлый смолистый запах земли и лимона. Физическое расслабление выражено сильно."},
+{n:"Girl Scout Cookies",t:"hybrid",d:"indica",ex:false,pop:true,ca:false,or:"США, Сан-Франциско",pa:"OG Kush × Durban Poison",thc:[19,28],cbd:[0.1,0.2],nv:"no",ti:["evening","night"],on:5,du:3,mo:3,ef:["Эйфория","Расслабление","Счастье","Творчество"],ng:["Сухость рта","Сонливость"],fl:["Печенье","Специи","Мята","Земля"],tp:["Caryophyllene","Limonene","Humulene"],md:["Боль","Тревога","Депрессия"],mt:["Косяк","Бонг","Вапорайзер","Съедобные"],aw:["High Times Cannabis Cup — победитель","Leafly Strain of the Year"],si:["Gelato","Wedding Cake","OG Kush"],yi:"300-400 г/м²",yo:"400-500 г/куст",fl2:"9-10 нед",ht:"90-120 см",di:"Средний",dn:2,yn:350,de:"Легендарный калифорнийский сорт. Исключительно высокий THC. Мощный эффект: мозговой подъём, потом тяжёлое расслабление. Не для новичков."},
+{n:"Gorilla Glue #4",t:"hybrid",d:"indica",ex:false,pop:true,ca:false,or:"США, Невада",pa:"Chem Sister × Chocolate Diesel × Sour Dubb",thc:[25,32],cbd:[0.1,0.1],nv:"no",ti:["evening","night"],on:4,du:4,mo:3,ef:["Расслабление","Эйфория","Сонливость","Ступор"],ng:["Сухость рта и глаз","Паранойя","Ступор"],fl:["Шоколад","Кофе","Земля","Химия"],tp:["Caryophyllene","Myrcene","Limonene"],md:["Хроническая боль","Бессонница","Депрессия"],mt:["Бонг","Вапорайзер","Съедобные"],aw:["High Times Cannabis Cup — 1 место (2014)","Cannabis Cup Denver — 1 место"],si:["OG Kush","Chemdawg","Bruce Banner"],yi:"500-600 г/м²",yo:"600-800 г/куст",fl2:"8-9 нед",ht:"100-130 см",di:"Средний",dn:2,yn:550,de:"Ножницы склеиваются от смолы. THC 25-32% — один из мощнейших. Тяжёлое couchlock-расслабление. Новичкам строго не рекомендуется."},
+{n:"Gelato",t:"hybrid",d:"indica",ex:false,pop:true,ca:false,or:"США, Сан-Франциско",pa:"Sunset Sherbet × Thin Mint GSC",thc:[20,28],cbd:[0.1,0.2],nv:"warn",ti:["evening"],on:6,du:2.5,mo:3,ef:["Расслабление","Эйфория","Фокус","Счастье"],ng:["Сухость рта","Сонливость"],fl:["Десерт","Цитрус","Лаванда","Ягоды"],tp:["Caryophyllene","Linalool","Limonene"],md:["Депрессия","Боль","Тревога","Стресс"],mt:["Косяк","Бонг","Вапорайзер","Съедобные"],aw:["High Times Cannabis Cup — номинант"],si:["Runtz","Wedding Cake","Girl Scout Cookies"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"8-9 нед",ht:"100-140 см",di:"Средний",dn:2,yn:450,de:"Изысканный сладкий аромат — как итальянское мороженое. Тело расслаблено, голова рабочая."},
+{n:"Wedding Cake",t:"hybrid",d:"indica",ex:false,pop:true,ca:false,or:"США, Лос-Анджелес",pa:"Triangle Kush × Animal Mints",thc:[22,30],cbd:[0.1,0.2],nv:"no",ti:["evening","night"],on:5,du:3,mo:3,ef:["Расслабление","Эйфория","Счастье","Аппетит"],ng:["Сонливость","Сухость рта","Паранойя"],fl:["Ваниль","Земля","Перец","Сладость"],tp:["Caryophyllene","Limonene","Myrcene"],md:["Боль","Депрессия","Бессонница"],mt:["Бонг","Вапорайзер","Съедобные"],aw:["Leafly Strain of the Year (2019)"],si:["Ice Cream Cake","Gelato","Girl Scout Cookies"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"7-9 нед",ht:"90-130 см",di:"Средний",dn:2,yn:450,de:"Сладкий пряно-ванильный аромат как у выпечки. Очень высокий THC. Мощный физический эффект с мозговой составляющей."},
+{n:"Zkittlez",t:"hybrid",d:"indica",ex:false,pop:true,ca:false,or:"США, Гумбольдт, Калифорния",pa:"Grape Ape × Grapefruit",thc:[15,23],cbd:[0.2,0.4],nv:"ok",ti:["evening"],on:8,du:2.5,mo:4,ef:["Расслабление","Фокус","Счастье","Спокойствие"],ng:["Сонливость","Сухость рта"],fl:["Тропик","Конфеты","Виноград","Цитрус"],tp:["Caryophyllene","Limonene","Humulene"],md:["Тревога","Стресс","Депрессия"],mt:["Косяк","Бонг","Вапорайзер"],aw:["Emerald Cup — 1 место (2016)","High Times Cannabis Cup — 1 место Indica (2015)"],si:["Runtz","Gelato","Pineapple Express"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"7-8 нед",ht:"100-130 см",di:"Средний",dn:2,yn:450,de:"Один из самых ароматных сортов. Вкус как детские конфеты. Расслабление без тяжёлой сонливости. Победитель множества кубков."},
+{n:"Ice Cream Cake",t:"hybrid",d:"indica",ex:false,pop:true,ca:false,or:"США, Калифорния",pa:"Wedding Cake × Gelato #33",thc:[20,27],cbd:[0.1,0.2],nv:"warn",ti:["evening","night"],on:6,du:3,mo:3,ef:["Расслабление","Сонливость","Эйфория","Счастье"],ng:["Сонливость","Сухость рта","Ступор"],fl:["Ваниль","Сливки","Сладость","Ягоды"],tp:["Caryophyllene","Linalool","Limonene"],md:["Бессонница","Боль","Стресс"],mt:["Бонг","Вапорайзер","Съедобные"],aw:[],si:["Wedding Cake","Gelato","Sundae Driver"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"7-9 нед",ht:"90-120 см",di:"Средний",dn:2,yn:450,de:"Потомок двух десертных легенд. Кремово-ванильный аромат. Глубокое расслабляющее действие — лучший выбор для позднего вечера."},
+{n:"Chemdawg",t:"hybrid",d:"indica",ex:false,pop:false,ca:false,or:"США, Массачусетс",pa:"Лэндрейс неизвестного происхождения",thc:[19,26],cbd:[0.1,0.2],nv:"warn",ti:["evening","night"],on:4,du:3,mo:2,ef:["Эйфория","Расслабление","Творчество","Разговорчивость"],ng:["Паранойя","Тревога","Сухость рта"],fl:["Дизель","Химия","Земля","Сосна"],tp:["Caryophyllene","Myrcene","Limonene"],md:["Боль","Стресс","ПТСР"],mt:["Бонг","Косяк","Вапорайзер"],aw:["Предок OG Kush и Sour Diesel — культовый статус"],si:["OG Kush","Gorilla Glue #4","Bruce Banner"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"9-10 нед",ht:"100-140 см",di:"Средний",dn:2,yn:450,de:"Таинственного происхождения сорт, ставший предком OG Kush и Sour Diesel. Резкий дизельно-химический аромат. Мощный церебральный эффект плавно переходит в тяжёлое расслабление."},
+{n:"Cereal Milk",t:"hybrid",d:"sativa",ex:true,pop:false,ca:false,or:"США, Калифорния (Cookies Fam)",pa:"Y Life × Snowman",thc:[18,23],cbd:[0.1,0.2],nv:"warn",ti:["day","evening"],on:6,du:2,mo:2,ef:["Эйфория","Фокус","Расслабление","Счастье"],ng:["Сухость рта","Тревога"],fl:["Молоко","Зерновые","Ваниль","Сладость"],tp:["Caryophyllene","Limonene","Linalool"],md:["Стресс","Тревога","Депрессия"],mt:["Вапорайзер","Бонг","Косяк"],aw:["Cookies Fam — культовый экзотический сорт"],si:["Gelato","Runtz","Sundae Driver"],yi:"350-450 г/м²",yo:"450 г/куст",fl2:"8-9 нед",ht:"90-130 см",di:"Средний",dn:2,yn:400,de:"Аромат буквально как молоко после хлопьев Cap'n Crunch. Один из самых необычных вкусовых профилей в мире. Лёгкий поднимающий эффект с лёгким расслаблением тела."},
+{n:"Garlic Cookies (GMO)",t:"hybrid",d:"indica",ex:true,pop:false,ca:false,or:"США, Сиэтл, Вашингтон",pa:"Girl Scout Cookies × Chemdawg",thc:[24,30],cbd:[0.1,0.1],nv:"no",ti:["evening","night"],on:4,du:4,mo:3,ef:["Расслабление","Эйфория","Сонливость","Обезболивание"],ng:["Ступор","Паранойя","Сухость рта"],fl:["Чеснок","Специи","Химия","Земля"],tp:["Caryophyllene","Myrcene","Limonene"],md:["Хроническая боль","Бессонница","ПТСР"],mt:["Бонг","Вапорайзер","Съедобные"],aw:["Cult following — Pacific Northwest"],si:["Chemdawg","Gorilla Glue #4","OG Kush"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"9-10 нед",ht:"90-120 см",di:"Средний",dn:2,yn:450,de:"Аномальный сорт — буквально пахнет чесноком и специями. Один из самых необычных аромапрофилей. Несмотря на странный запах, мощнейший эффект. Культовый статус."},
+{n:"Grease Monkey",t:"hybrid",d:"indica",ex:true,pop:false,ca:true,or:"КАНАДА (Exotic Genetix)",pa:"Gorilla Glue #4 × Cookies & Cream",thc:[25,30],cbd:[0.1,0.1],nv:"no",ti:["evening","night"],on:4,du:4,mo:4,ef:["Расслабление","Эйфория","Сонливость","Обезболивание"],ng:["Ступор","Сухость рта","Паранойя"],fl:["Ваниль","Печенье","Дизель","Специи"],tp:["Caryophyllene","Myrcene","Limonene"],md:["Хроническая боль","Бессонница","Стресс"],mt:["Бонг","Вапорайзер","Съедобные"],aw:["Канадский экзотический — культовый местный сорт"],si:["Gorilla Glue #4","Girl Scout Cookies","Chemdawg"],yi:"450-550 г/м²",yo:"550 г/куст",fl2:"8-9 нед",ht:"90-130 см",di:"Средний",dn:2,yn:500,de:"Создан в Канаде! Ванильно-дизельный профиль. Очень высокий THC, один из самых смолистых сортов. Мощный indica-эффект."},
+{n:"Sundae Driver",t:"hybrid",d:"indica",ex:true,pop:false,ca:false,or:"США (Cannarado Genetics)",pa:"Fruity Pebbles OG × Grape Pie",thc:[14,20],cbd:[0.1,0.2],nv:"ok",ti:["evening"],on:8,du:2.5,mo:3,ef:["Расслабление","Счастье","Фокус","Спокойствие"],ng:["Сонливость","Сухость рта"],fl:["Шоколад","Сливки","Ягоды","Ваниль"],tp:["Linalool","Caryophyllene","Limonene"],md:["Стресс","Тревога","Депрессия"],mt:["Вапорайзер","Косяк","Бонг"],aw:["Emerald Cup — победитель (2019)"],si:["Cereal Milk","Gelato","Wedding Cake"],yi:"350-450 г/м²",yo:"400 г/куст",fl2:"7-9 нед",ht:"80-120 см",di:"Средний",dn:2,yn:400,de:"Шоколадно-кремовый аромат как мороженое. Умеренный indica-эффект — редкий случай для экзотики, когда новичкам не страшно."},
+{n:"MAC 1",t:"hybrid",d:"sativa",ex:true,pop:false,ca:false,or:"США, Нью-Джерси",pa:"Alien Cookies F2 × Colombian × Starfighter",thc:[20,28],cbd:[0.1,0.2],nv:"warn",ti:["day","evening"],on:5,du:2.5,mo:2,ef:["Эйфория","Творчество","Расслабление","Фокус"],ng:["Сухость рта","Паранойя"],fl:["Цветочный","Дизель","Ваниль","Специи"],tp:["Caryophyllene","Limonene","Myrcene"],md:["Депрессия","Тревога","Стресс"],mt:["Вапорайзер","Бонг","Косяк"],aw:["Emerald Cup — финалист","Очень редкий — ограниченное производство"],si:["Cereal Milk","Runtz","Gelato"],yi:"350-450 г/м²",yo:"400 г/куст",fl2:"9-10 нед",ht:"100-130 см",di:"Сложный",dn:3,yn:400,de:"Miracle Alien Cookies — легенда среди экзотических сортов. Чрезвычайно редкий, ограниченный семенной банк. Уникальный цветочно-дизельный аромат."},
+{n:"Tropicana Cookies",t:"hybrid",d:"sativa",ex:true,pop:false,ca:false,or:"США, Калифорния",pa:"Girl Scout Cookies × Tangie",thc:[19,25],cbd:[0.1,0.2],nv:"warn",ti:["day","evening"],on:5,du:2,mo:3,ef:["Эйфория","Энергия","Творчество","Счастье"],ng:["Тревога","Сухость рта"],fl:["Апельсин","Тропик","Конфеты","Цитрус"],tp:["Limonene","Caryophyllene","Ocimene"],md:["Депрессия","Стресс","Усталость"],mt:["Косяк","Вапорайзер","Бонг"],aw:["Emerald Cup — номинант","Best Sativa Cookies Fam"],si:["Mimosa","Pineapple Express","Cereal Milk"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"8-10 нед",ht:"100-150 см",di:"Средний",dn:2,yn:450,de:"Потрясающий апельсиново-тропический аромат с печеньем. Фиолетово-оранжевые шишки. Один из красивейших сортов. Поднимающий и творческий эффект."},
+{n:"Banana OG",t:"hybrid",d:"indica",ex:true,pop:false,ca:false,or:"США, Калифорния",pa:"OG Kush × Banana",thc:[23,27],cbd:[0.1,0.1],nv:"no",ti:["evening","night"],on:5,du:3.5,mo:3,ef:["Расслабление","Эйфория","Сонливость","Аппетит"],ng:["Ступор","Сонливость","Паранойя"],fl:["Банан","Тропик","Земля","Сладость"],tp:["Myrcene","Caryophyllene","Limonene"],md:["Бессонница","Боль","Отсутствие аппетита"],mt:["Бонг","Вапорайзер","Съедобные"],aw:[],si:["OG Kush","Bubba Kush","Gelato"],yi:"400-500 г/м²",yo:"500 г/куст",fl2:"8-9 нед",ht:"90-130 см",di:"Средний",dn:2,yn:450,de:"Аромат свежего банана с землистыми нотками OG. Очень высокий THC для фруктового сорта. Мощнейший indica-эффект. Новичкам строго не рекомендуется."},
+{n:"Northern Lights Auto",t:"ruderalis",d:null,ex:false,pop:true,ca:false,or:"Нидерланды → авто",pa:"Northern Lights × Ruderalis",thc:[14,18],cbd:[0.1,0.3],nv:"ok",ti:["evening","night"],on:12,du:3,mo:5,ef:["Расслабление","Снятие боли","Сонливость","Спокойствие"],ng:["Сонливость","Сухость рта"],fl:["Земля","Сосна","Сладость"],tp:["Myrcene","Caryophyllene","Linalool"],md:["Бессонница","Боль","Тревога"],mt:["Косяк","Бонг","Трубка"],aw:[],si:["Critical Auto","Blue Dream Auto","Afghan Kush"],yi:"300-400 г/м²",yo:"70-100 г/куст",fl2:"8-9 нед от прорастания",ht:"60-100 см",di:"Лёгкий",dn:1,yn:350,de:"Авто-версия классики. Зацветает автоматически. Идеален для новичков и домашнего выращивания в Канаде."},
+{n:"Gorilla Glue Auto",t:"ruderalis",d:null,ex:false,pop:true,ca:false,or:"США → авто-гибрид",pa:"GG#4 × Ruderalis",thc:[20,24],cbd:[0.1,0.2],nv:"warn",ti:["evening","night"],on:8,du:3,mo:4,ef:["Расслабление","Эйфория","Сонливость","Счастье"],ng:["Ступор","Сухость рта"],fl:["Шоколад","Земля","Химия"],tp:["Caryophyllene","Myrcene","Limonene"],md:["Боль","Бессонница","Стресс"],mt:["Бонг","Косяк","Вапорайзер"],aw:[],si:["Northern Lights Auto","Wedding Cake Auto","GSC Auto"],yi:"400-500 г/м²",yo:"80-150 г/куст",fl2:"8-9 нед от прорастания",ht:"70-110 см",di:"Лёгкий",dn:1,yn:450,de:"Автоцветущий потомок GG#4. Сохраняет мощь оригинала при удобстве авто-формата. Высокий THC для авто."},
+{n:"Blue Dream Auto",t:"ruderalis",d:null,ex:false,pop:true,ca:false,or:"США → авто-гибрид",pa:"Blue Dream × Ruderalis",thc:[14,20],cbd:[0.1,0.2],nv:"ok",ti:["day","evening"],on:8,du:2,mo:3,ef:["Эйфория","Расслабление","Энергия","Счастье"],ng:["Сухость рта","Лёгкая тревога"],fl:["Черника","Ваниль","Земля"],tp:["Myrcene","Caryophyllene","Pinene"],md:["Стресс","Депрессия","Боль"],mt:["Косяк","Вапорайзер","Бонг"],aw:[],si:["Northern Lights Auto","AK-47 Auto","Amnesia Haze Auto"],yi:"350-450 г/м²",yo:"60-100 г/куст",fl2:"8-9 нед от прорастания",ht:"60-100 см",di:"Лёгкий",dn:1,yn:400,de:"Авто-Blue Dream. Сохраняет черничный аромат и сбалансированный эффект оригинала без настройки светового цикла."},
+{n:"Critical Auto",t:"ruderalis",d:null,ex:false,pop:true,ca:false,or:"Нидерланды → авто-гибрид",pa:"Critical Mass × Ruderalis",thc:[14,18],cbd:[0.5,2],nv:"ok",ti:["evening","night"],on:12,du:3,mo:5,ef:["Расслабление","Снятие боли","Спокойствие","Голод"],ng:["Сонливость","Сухость рта"],fl:["Цитрус","Земля","Специи","Сладость"],tp:["Myrcene","Caryophyllene","Pinene"],md:["Боль","Бессонница","Отсутствие аппетита"],mt:["Косяк","Бонг","Съедобные"],aw:[],si:["Northern Lights Auto","Afghan Kush","Blueberry"],yi:"400-500 г/м²",yo:"100-150 г/куст",fl2:"7-9 нед от прорастания",ht:"50-100 см",di:"Лёгкий",dn:1,yn:450,de:"Одна из самых урожайных авто-версий! Умеренный THC + повышенный CBD. Идеален для медицинских целей. Очень прост в выращивании."},
+{n:"Amnesia Haze Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"Нидерланды → авто-гибрид",pa:"Amnesia Haze × Ruderalis",thc:[15,21],cbd:[0.1,0.2],nv:"ok",ti:["morning","day"],on:6,du:2,mo:3,ef:["Энергия","Эйфория","Творчество","Счастье"],ng:["Тревога","Сухость рта"],fl:["Лимон","Земля","Цветы"],tp:["Terpinolene","Myrcene","Ocimene"],md:["Депрессия","Усталость","Стресс"],mt:["Косяк","Вапорайзер","Бонг"],aw:[],si:["Blue Dream Auto","Jack Herer Auto","Lemon Haze"],yi:"400-500 г/м²",yo:"80-130 г/куст",fl2:"10-11 нед от прорастания",ht:"80-120 см",di:"Лёгкий",dn:1,yn:450,de:"Авто-интерпретация легендарного хейза. Сохраняет лимонный аромат и сативный эффект предка. Зацветает без смены светового дня."},
+{n:"GSC Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"США → авто-гибрид",pa:"Girl Scout Cookies × Ruderalis",thc:[17,21],cbd:[0.1,0.2],nv:"warn",ti:["evening"],on:8,du:2.5,mo:3,ef:["Эйфория","Расслабление","Счастье","Творчество"],ng:["Сухость рта","Сонливость"],fl:["Печенье","Специи","Мята","Земля"],tp:["Caryophyllene","Limonene","Humulene"],md:["Тревога","Депрессия","Боль"],mt:["Косяк","Бонг","Вапорайзер"],aw:[],si:["Gorilla Glue Auto","Wedding Cake Auto","Runtz Auto"],yi:"350-450 г/м²",yo:"60-90 г/куст",fl2:"8-10 нед от прорастания",ht:"60-100 см",di:"Лёгкий",dn:1,yn:400,de:"Авто-версия культового GSC. Сохраняет печеньевый аромат и мощный эффект без сложного светового графика."},
+{n:"Jack Herer Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"Нидерланды → авто-гибрид",pa:"Jack Herer × Ruderalis",thc:[15,18],cbd:[0.1,0.2],nv:"ok",ti:["morning","day"],on:7,du:2,mo:4,ef:["Энергия","Фокус","Счастье","Творчество"],ng:["Тревога при передозе","Сухость рта"],fl:["Сосна","Специи","Земля"],tp:["Terpinolene","Pinene","Myrcene"],md:["Депрессия","СДВГ","Усталость"],mt:["Косяк","Вапорайзер","Бонг"],aw:[],si:["Amnesia Haze Auto","Blue Dream Auto","AK-47 Auto"],yi:"300-400 г/м²",yo:"60-90 г/куст",fl2:"8-9 нед от прорастания",ht:"60-90 см",di:"Лёгкий",dn:1,yn:350,de:"Авто-версия классического сатива-сорта. Чистый поднимающий эффект. Умеренный THC — хорошо для новичков. Компактный размер."},
+{n:"AK-47 Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"Нидерланды → авто-гибрид",pa:"AK-47 × Ruderalis",thc:[15,20],cbd:[0.1,0.5],nv:"ok",ti:["day","evening"],on:7,du:2,mo:4,ef:["Расслабление","Счастье","Творчество","Эйфория"],ng:["Сухость рта","Тревога"],fl:["Земля","Цветы","Специи"],tp:["Myrcene","Caryophyllene","Limonene"],md:["Стресс","Депрессия","Боль"],mt:["Косяк","Бонг","Вапорайзер"],aw:[],si:["Jack Herer Auto","Blue Dream Auto","White Widow Auto"],yi:"300-400 г/м²",yo:"60-100 г/куст",fl2:"7-8 нед от прорастания",ht:"50-90 см",di:"Лёгкий",dn:1,yn:350,de:"Авто-версия культового AK-47. Сохраняет землисто-цветочный аромат и долгий расслабляющий эффект. Отличный выбор для новичков."},
+{n:"Runtz Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"США → авто-гибрид",pa:"Runtz × Ruderalis",thc:[16,22],cbd:[0.1,0.2],nv:"warn",ti:["day","evening"],on:6,du:2,mo:3,ef:["Эйфория","Расслабление","Счастье","Творчество"],ng:["Сухость рта","Паранойя"],fl:["Конфеты","Фрукты","Тропик","Сладость"],tp:["Limonene","Caryophyllene","Linalool"],md:["Тревога","Стресс","Депрессия"],mt:["Косяк","Бонг","Вапорайзер"],aw:[],si:["GSC Auto","Wedding Cake Auto","Gorilla Glue Auto"],yi:"350-450 г/м²",yo:"70-110 г/куст",fl2:"8-9 нед от прорастания",ht:"60-100 см",di:"Лёгкий",dn:1,yn:400,de:"Авто-версия популярнейшего Runtz. Сохраняет конфетный аромат. Один из самых ароматных авто-сортов."},
+{n:"Wedding Cake Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"США → авто-гибрид",pa:"Wedding Cake × Ruderalis",thc:[18,22],cbd:[0.1,0.2],nv:"warn",ti:["evening","night"],on:8,du:2.5,mo:3,ef:["Расслабление","Эйфория","Счастье","Аппетит"],ng:["Сонливость","Сухость рта"],fl:["Ваниль","Земля","Сладость"],tp:["Caryophyllene","Limonene","Myrcene"],md:["Боль","Бессонница","Депрессия"],mt:["Бонг","Вапорайзер","Съедобные"],aw:[],si:["GSC Auto","Gorilla Glue Auto","Runtz Auto"],yi:"350-450 г/м²",yo:"60-100 г/куст",fl2:"7-9 нед от прорастания",ht:"60-100 см",di:"Лёгкий",dn:1,yn:400,de:"Авто-версия Leafly Strain of the Year 2019. Ванильно-сладкий аромат. Один из самых мощных авто-сортов."},
+{n:"Zkittlez Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"США → авто-гибрид",pa:"Zkittlez × Ruderalis",thc:[15,20],cbd:[0.2,0.4],nv:"ok",ti:["evening"],on:10,du:2,mo:4,ef:["Расслабление","Счастье","Фокус","Спокойствие"],ng:["Сонливость","Сухость рта"],fl:["Тропик","Конфеты","Виноград"],tp:["Caryophyllene","Limonene","Humulene"],md:["Тревога","Стресс","Боль"],mt:["Косяк","Вапорайзер","Бонг"],aw:[],si:["Critical Auto","Northern Lights Auto","Blue Dream Auto"],yi:"350-450 г/м²",yo:"60-90 г/куст",fl2:"7-9 нед от прорастания",ht:"50-90 см",di:"Лёгкий",dn:1,yn:400,de:"Авто-версия рекордсмена Cannabis Cup. Умеренный THC с повышенным CBD — доступно для новичков."},
+{n:"White Widow Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"Нидерланды → авто-гибрид",pa:"White Widow × Ruderalis",thc:[14,20],cbd:[0.1,0.2],nv:"ok",ti:["day","evening"],on:7,du:2,mo:4,ef:["Эйфория","Энергия","Расслабление","Счастье"],ng:["Сухость рта","Лёгкая тревога"],fl:["Земля","Дерево","Специи"],tp:["Caryophyllene","Myrcene","Limonene"],md:["Стресс","Депрессия","Тревога"],mt:["Косяк","Бонг","Вапорайзер"],aw:[],si:["AK-47 Auto","Blue Dream Auto","Jack Herer Auto"],yi:"300-400 г/м²",yo:"60-90 г/куст",fl2:"7-9 нед от прорастания",ht:"50-90 см",di:"Лёгкий",dn:1,yn:350,de:"Авто-версия классической White Widow. Компактна, быстра. Сохраняет кристально-белый вид шишек и поднимающий эффект оригинала."},
+{n:"Durban Poison Auto",t:"ruderalis",d:null,ex:false,pop:false,ca:false,or:"ЮАР → авто-гибрид",pa:"Durban Poison × Ruderalis",thc:[13,18],cbd:[0.1,0.2],nv:"ok",ti:["morning","day"],on:7,du:2,mo:5,ef:["Энергия","Фокус","Счастье","Ясность ума"],ng:["Сухость рта","Тревога (редко)"],fl:["Анис","Лакрица","Мята"],tp:["Terpinolene","Myrcene","Ocimene"],md:["СДВГ","Депрессия","Усталость"],mt:["Косяк","Вапорайзер","Трубка"],aw:[],si:["Jack Herer Auto","Amnesia Haze Auto","AK-47 Auto"],yi:"300-400 г/м²",yo:"50-80 г/куст",fl2:"7-8 нед от прорастания",ht:"50-90 см",di:"Лёгкий",dn:1,yn:350,de:"Авто-версия африканского лэндрейса. Сохраняет анисово-мятный аромат и функциональный стимулирующий эффект. Отлично для продуктивного дня."}
+];
+
+var fType='all',fSpecial='all',fTime='all',sortBy='name',cList=[];
+
+function showPanel(name,el){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('panel-'+name).classList.add('active');
+  el.classList.add('active');
+}
+
+function setFilter(g,v){
+  if(g==='type') fType=v;
+  else if(g==='special') fSpecial=v;
+  else fTime=v;
+  document.querySelectorAll('.filter-btn[data-g="'+g+'"]').forEach(function(b){b.classList.remove('active');});
+  document.querySelector('.filter-btn[data-g="'+g+'"][data-v="'+v+'"]').classList.add('active');
+  render();
+}
+
+function setSort(s){
+  sortBy=s;
+  document.querySelectorAll('.sort-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelector('.sort-btn[data-s="'+s+'"]').classList.add('active');
+  render();
+}
+
+function getTI(s){
+  if(s.ex) return {cls:'exotic-b',lb:'ЭКЗОТИКА',cc:'exotic-card'};
+  if(s.t==='sativa') return {cls:'sativa',lb:'САТИВА',cc:'sativa-card'};
+  if(s.t==='indica') return {cls:'indica',lb:'ИНДИКА',cc:'indica-card'};
+  if(s.t==='ruderalis') return {cls:'ruderalis',lb:'АВТО',cc:'rude-card'};
+  if(s.d==='sativa') return {cls:'hybrid-s',lb:'ГИБ·САТ',cc:'hybrid-s-card'};
+  if(s.d==='indica') return {cls:'hybrid-i',lb:'ГИБ·ИНД',cc:'hybrid-i-card'};
+  return {cls:'hybrid-s',lb:'ГИБРИД',cc:'hybrid-s-card'};
+}
+
+function getNI(nv){
+  if(nv==='ok') return {cls:'ok',lb:'✅ Новичкам OK'};
+  if(nv==='warn') return {cls:'warn',lb:'⚠️ Осторожно'};
+  return {cls:'no',lb:'❌ Не новичкам'};
+}
+
+function thcGrad(mid){
+  if(mid<16) return 'linear-gradient(90deg,#3a9a3a,#6dd67a)';
+  if(mid<22) return 'linear-gradient(90deg,#3a9a3a,#f5c518)';
+  if(mid<27) return 'linear-gradient(90deg,#f5c518,#e8a030)';
+  return 'linear-gradient(90deg,#e8a030,#D42B2B)';
+}
+
+function matches(s){
+  var tMin=parseInt(document.getElementById('thcMin').value)||0;
+  var tMax=parseInt(document.getElementById('thcMax').value)||32;
+  var mMin=parseInt(document.getElementById('moldMin').value)||1;
+  if(tMin>tMax){var tmp=tMin;tMin=tMax;tMax=tmp;}
+  if(s.thc[1]<tMin||s.thc[0]>tMax) return false;
+  if(s.mo<mMin) return false;
+  if(fType!=='all'){
+    if(fType==='exotic'&&!s.ex) return false;
+    if(fType==='canadian'&&!s.ca) return false;
+    if(fType==='hybrid'&&s.t!=='hybrid') return false;
+    if(fType==='sativa'&&s.t!=='sativa') return false;
+    if(fType==='indica'&&s.t!=='indica') return false;
+    if(fType==='ruderalis'&&s.t!=='ruderalis') return false;
+  }
+  if(fSpecial==='beginner'&&s.nv!=='ok') return false;
+  if(fSpecial==='popular'&&!s.pop) return false;
+  if(fSpecial==='award'&&(!s.aw||!s.aw.length)) return false;
+  if(fTime!=='all'&&(!s.ti||s.ti.indexOf(fTime)===-1)) return false;
+  return true;
+}
+
+function matchQ(s,q){
+  if(!q) return true;
+  var h=[s.n,s.de,s.or,s.pa||'',
+    s.ef.join(' '),s.ng.join(' '),s.fl.join(' '),
+    (s.mt||[]).join(' '),(s.aw||[]).join(' '),
+    (s.tp||[]).join(' '),(s.md||[]).join(' '),
+    s.nv==='ok'?'новичок новичкам рекомендуется':'',
+    s.nv==='no'?'не рекомендуется опытным':'',
+    s.pop?'популярный хит hot':'',
+    s.t,s.d||'',s.ex?'экзотика':'',s.ca?'канада canada':'',
+    s.t==='ruderalis'?'авто автоцветущий auto':''
+  ].join(' ').toLowerCase();
+  return q.split(' ').every(function(w){return w.length<2||h.includes(w);});
+}
+
+function doSort(arr){
+  return arr.slice().sort(function(a,b){
+    if(sortBy==='name') return a.n.localeCompare(b.n,'ru');
+    if(sortBy==='thc_h') return (b.thc[0]+b.thc[1])-(a.thc[0]+a.thc[1]);
+    if(sortBy==='thc_l') return (a.thc[0]+a.thc[1])-(b.thc[0]+b.thc[1]);
+    if(sortBy==='yield') return b.yn-a.yn;
+    if(sortBy==='diff') return a.dn-b.dn;
+    if(sortBy==='onset') return a.on-b.on;
+    if(sortBy==='mold') return b.mo-a.mo;
+    return 0;
+  });
+}
+
+function render(){
+  var q=document.getElementById('search').value.toLowerCase().trim();
+  var filtered=doSort(S.filter(function(s){return matches(s)&&matchQ(s,q);}));
+  document.getElementById('count').textContent=filtered.length+' сортов';
+  var grid=document.getElementById('grid');
+  if(!filtered.length){grid.innerHTML='<div class="no-results">🌿 НИЧЕГО НЕ НАЙДЕНО</div>';return;}
+
+  grid.innerHTML=filtered.map(function(s,i){
+    var ti=getTI(s),ni=getNI(s.nv),idx=S.indexOf(s);
+    var mid=(s.thc[0]+s.thc[1])/2,pct=Math.round((mid/32)*100);
+    var inC=cList.indexOf(idx)!==-1;
+    var timeH=(s.ti||[]).map(function(t){return '<span class="time-tag">'+TL[t]+'</span>';}).join('');
+    var terpH=(s.tp||[]).map(function(t){return '<span class="terp" style="border:1px solid '+(TC[t]||'#666')+';color:'+(TC[t]||'#999')+'">'+t+'</span>';}).join('');
+    var mH=(s.mt||[]).slice(0,3).map(function(m){return '<span class="tag method">'+m+'</span>';}).join('');
+    return '<div class="card '+ti.cc+'" style="" onclick="openDet('+idx+')">'
+      +'<div class="card-top"><div class="strain-name">'+s.n+(s.aw&&s.aw.length?' 🏆':'')+'</div>'
+      +'<div class="badges"><div class="type-badge '+ti.cls+'">'+ti.lb+'</div>'
+      +'<div class="novice-badge '+ni.cls+'">'+ni.lb+'</div>'
+      +(s.pop?'<div class="popular-pill">🔥 ХИТ</div>':'')+'</div></div>'
+      +'<div class="card-body"><div class="origin-flag">'+s.or+'</div>'
+      +'<div class="time-tags">'+timeH+'</div>'
+      +'<div class="effect-tags">'+s.ef.slice(0,4).map(function(e){return '<span class="tag">'+e+'</span>';}).join('')+'</div>'
+      +'<div class="effect-tags">'+mH+'</div>'
+      +'<div class="stats">'
+      +'<div class="stat">THC<span>'+s.thc[0]+'–'+s.thc[1]+'%</span>'
+      +'<div class="thc-bar"><div class="thc-fill" style="width:'+pct+'%;background:'+thcGrad(mid)+'"></div></div></div>'
+      +'<div class="stat">Приход<span>'+s.on+' мин</span></div>'
+      +'<div class="stat">Длит.<span>'+s.du+' ч</span></div>'
+      +'<div class="stat">Плесень<span>'+'⭐'.repeat(s.mo)+'</span></div>'
+      +'</div><div class="terpene-row">'+terpH+'</div></div>'
+      +'<button class="compare-btn'+(inC?' selected':'')+'" onclick="event.stopPropagation();toggleC('+idx+',this)">'
+      +(inC?'✓ В сравнении':'+ Сравнить')+'</button></div>';
+  }).join('');
+}
+
+function openDet(idx){
+  var s=S[idx],ti=getTI(s),ni=getNI(s.nv);
+  var nm=s.nv==='ok'?'✅ Рекомендуется новичкам. Мягкий эффект, низкий риск тревоги при умеренном употреблении.'
+    :s.nv==='warn'?'⚠️ Новичкам стоит проявить осторожность. Начни с малой дозы. Высокий THC может вызвать тревогу и паранойю.'
+    :'❌ Новичкам точно не следует. Очень высокий THC и сильный эффект. Только для опытных пользователей.';
+  var timeH=(s.ti||[]).map(function(t){return '<span class="time-tag">'+TL[t]+'</span>';}).join(' ');
+  var onPct=Math.min(100,Math.round((s.on/20)*100));
+  var duPct=Math.min(100,Math.round((s.du/6)*100));
+  var moPct=Math.round((s.mo/5)*100);
+  var terpH=(s.tp||[]).map(function(t){
+    var c=TC[t]||'#999';
+    return '<div class="terp-detail-item"><div class="tn" style="color:'+c+'">'+t+'</div><div class="td">'+(TDesc[t]||t)+'</div></div>';
+  }).join('');
+  var simH=(s.si||[]).map(function(nm2){
+    var si2=S.findIndex(function(x){return x.n===nm2;});
+    if(si2===-1) return '<span class="similar-tag">'+nm2+'</span>';
+    return '<span class="similar-tag" onclick="closeOv();setTimeout(function(){openDet('+si2+')},120)">'+nm2+'</span>';
+  }).join('');
+  document.getElementById('detail').innerHTML=
+    '<div class="detail-rasta-bar"><span class="r"></span><span class="g"></span><span class="gr"></span></div>'
+    +'<button class="close-btn" onclick="closeOv()">✕ CLOSE</button>'
+    +'<div class="detail-name">'+s.n+(s.aw&&s.aw.length?' 🏆':'')+'</div>'
+    +'<div class="detail-badges"><div class="type-badge '+ti.cls+'" style="display:inline-block">'+ti.lb+'</div>'
+    +'<div class="novice-badge '+ni.cls+'" style="display:inline-block">'+ni.lb+'</div>'
+    +(s.pop?'<div class="popular-pill" style="display:inline-block">🔥 ХИТ</div>':'')
+    +(s.ca?'<div class="popular-pill" style="display:inline-block;background:rgba(163,48,48,.15);border-color:rgba(163,48,48,.5);color:#e07070">🇨🇦 CANADA</div>':'')
+    +'</div><div class="detail-origin">'+s.or+(s.pa?' · '+s.pa:'')+'</div>'
+    +'<div class="detail-section"><h3>Описание</h3><div class="detail-text">'+s.de+'</div></div>'
+    +'<div class="detail-section"><h3>Для новичков</h3><div class="novice-box '+s.nv+'">'+nm+'</div></div>'
+    +'<div class="detail-section"><h3>Время суток и эффект</h3>'
+    +'<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px">'+timeH+'</div>'
+    +'<div class="time-effect"><label>Приход эффекта</label><div class="time-bar"><div class="time-fill" style="width:'+onPct+'%;background:var(--gold)"></div></div><span style="font-size:.63rem;color:var(--gold)">'+s.on+' мин</span></div>'
+    +'<div class="time-effect"><label>Длительность</label><div class="time-bar"><div class="time-fill" style="width:'+duPct+'%;background:var(--green)"></div></div><span style="font-size:.63rem;color:#6dd67a">'+s.du+' ч</span></div>'
+    +'<div class="time-effect"><label>Устойч. к плесени</label><div class="time-bar"><div class="time-fill" style="width:'+moPct+'%;background:#4ab5b5"></div></div><span style="font-size:.63rem;color:#4ab5b5">'+'⭐'.repeat(s.mo)+' ('+s.mo+'/5)</span></div>'
+    +'</div>'
+    +'<div class="detail-section"><h3>Параметры</h3><div class="detail-grid">'
+    +'<div class="detail-stat"><label>THC</label><value>'+s.thc[0]+'–'+s.thc[1]+'%</value></div>'
+    +'<div class="detail-stat"><label>CBD</label><value>'+s.cbd[0]+'–'+s.cbd[1]+'%</value></div>'
+    +'<div class="detail-stat"><label>Высота</label><value>'+s.ht+'</value></div>'
+    +'<div class="detail-stat"><label>Цветение</label><value>'+s.fl2+'</value></div>'
+    +'<div class="detail-stat"><label>Indoor</label><value>'+s.yi+'</value></div>'
+    +'<div class="detail-stat"><label>Outdoor</label><value>'+s.yo+'</value></div>'
+    +'</div></div>'
+    +'<div class="detail-section"><h3>Эффекты</h3><div class="effect-tags">'
+    +s.ef.map(function(e){return '<span class="tag">'+e+'</span>';}).join('')
+    +s.ng.map(function(e){return '<span class="tag neg">⚠ '+e+'</span>';}).join('')
+    +'</div></div>'
+    +'<div class="detail-section"><h3>Медицинское применение</h3><div class="effect-tags">'
+    +(s.md||[]).map(function(m){return '<span class="tag" style="color:#4ab5b5;border-color:rgba(75,181,181,.35);background:rgba(75,181,181,.08)">'+m+'</span>';}).join('')
+    +'</div></div>'
+    +'<div class="detail-section"><h3>Терпены</h3><div class="terp-detail-grid">'+terpH+'</div></div>'
+    +'<div class="detail-section"><h3>Способы употребления</h3><div class="method-tags">'
+    +(s.mt||[]).map(function(m){return '<span class="method-tag">'+m+'</span>';}).join('')
+    +'</div></div>'
+    +'<div class="detail-section"><h3>Аромат и вкус</h3><div class="flavor-tags">'
+    +s.fl.map(function(f){return '<span class="flavor-tag">'+f+'</span>';}).join('')
+    +'</div></div>'
+    +(s.aw&&s.aw.length?'<div class="detail-section"><h3>🏆 Награды</h3><div class="award-box">'+s.aw.join('<br>')+'</div></div>':'')
+    +'<div class="detail-section"><h3>Похожие сорта</h3><div class="similar-tags">'+simH+'</div></div>'
+    +'<div class="detail-section"><h3>🇨🇦 Канада — статус</h3>'
+    +'<div class="canada-note">Cannabis легален с <strong>17 октября 2018</strong> (Cannabis Act). Хранение до <strong>30 г</strong>, выращивание до <strong>4 растений</strong> на домохозяйство. Покупка в лицензированных магазинах и онлайн: <strong>OCS</strong> (Ontario), BC Cannabis Stores, Alberta Cannabis. Мин. возраст <strong>19 лет</strong> в большинстве провинций. Употребление на улице зависит от муниципалитета.</div></div>';
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeOv(e){
+  if(!e||e.target===document.getElementById('overlay')){
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+
+function toggleC(idx,btn){
+  var pos=cList.indexOf(idx);
+  if(pos!==-1){cList.splice(pos,1);btn.textContent='+ Сравнить';btn.classList.remove('selected');}
+  else{
+    if(cList.length>=3){alert('Максимум 3 сорта для сравнения');return;}
+    cList.push(idx);btn.textContent='✓ В сравнении';btn.classList.add('selected');
+  }
+  updateCBar();
+}
+
+function updateCBar(){
+  var bar=document.getElementById('comparebar'),slots=document.getElementById('compare-slots');
+  if(!cList.length){bar.classList.remove('show');return;}
+  bar.classList.add('show');
+  slots.innerHTML=cList.map(function(i){
+    return '<div class="compare-slot">'+S[i].n+'<span class="rem" onclick="remC('+i+')">✕</span></div>';
+  }).join('');
+}
+
+function remC(idx){cList=cList.filter(function(i){return i!==idx;});updateCBar();render();}
+function clearCompare(){cList=[];updateCBar();render();}
+
+function openCompare(){
+  if(cList.length<2){alert('Выбери минимум 2 сорта');return;}
+  var ss=cList.map(function(i){return S[i];});
+  var rows=[
+    ['Тип',function(s){return getTI(s).lb;}],
+    ['Происхождение',function(s){return s.or;}],
+    ['THC',function(s){return s.thc[0]+'–'+s.thc[1]+'%';}],
+    ['CBD',function(s){return s.cbd[0]+'–'+s.cbd[1]+'%';}],
+    ['Новичкам',function(s){return s.nv==='ok'?'✅ Да':s.nv==='warn'?'⚠️ Осторожно':'❌ Нет';}],
+    ['Время',function(s){return (s.ti||[]).map(function(t){return TL[t];}).join(', ');}],
+    ['Приход (мин)',function(s){return s.on+' мин';}],
+    ['Длит. (ч)',function(s){return s.du+' ч';}],
+    ['Плесень',function(s){return '⭐'.repeat(s.mo)+' ('+s.mo+'/5)';}],
+    ['Indoor',function(s){return s.yi;}],
+    ['Outdoor',function(s){return s.yo;}],
+    ['Цветение',function(s){return s.fl2;}],
+    ['Высота',function(s){return s.ht;}],
+    ['Сложность',function(s){return s.di;}],
+    ['Терпены',function(s){return (s.tp||[]).join(', ');}],
+    ['Эффекты',function(s){return s.ef.join(', ');}],
+    ['Медицина',function(s){return (s.md||[]).join(', ');}],
+    ['Методы',function(s){return (s.mt||[]).join(', ');}],
+  ];
+  var h='<thead><tr><th>Параметр</th>'+ss.map(function(s){return '<th>'+s.n+'</th>';}).join('')+'</tr></thead>';
+  var b='<tbody>'+rows.map(function(r){
+    return '<tr><td>'+r[0]+'</td>'+ss.map(function(s){return '<td>'+r[1](s)+'</td>';}).join('')+'</tr>';
+  }).join('')+'</tbody>';
+  document.getElementById('cmptable').innerHTML=h+b;
+  document.getElementById('compareoverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeCompareOv(e){
+  if(!e||e.target===document.getElementById('compareoverlay')){
+    document.getElementById('compareoverlay').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+
+// QUIZ
+var qA={},qStep=0;
+function pickQ(step,val){
+  qA[step]=val;
+  document.querySelectorAll('#qs'+step+' .quiz-opt').forEach(function(b){b.classList.remove('picked');});
+  event.target.classList.add('picked');
+  document.getElementById('qd'+step).classList.add('done');
+  setTimeout(function(){
+    if(step<3){document.getElementById('qs'+step).classList.remove('active');qStep=step+1;document.getElementById('qs'+qStep).classList.add('active');}
+    else showQR();
+  },320);
+}
+
+function showQR(){
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active');});
+  var exp=qA[0],mood=qA[1],tod=qA[2],flav=qA[3];
+  var cands=S.filter(function(s){
+    if(exp==='beginner'&&s.nv!=='ok') return false;
+    if(exp==='experienced'&&s.nv==='ok'&&s.thc[1]<22) return false;
+    if(mood==='energy'&&!s.ef.some(function(e){return /энерги|фокус|мотиваци/i.test(e);})) return false;
+    if(mood==='sleep'&&!s.ef.some(function(e){return /сон|снятие|обезболив/i.test(e);})) return false;
+    if(mood==='relax'&&!s.ef.some(function(e){return /расслабл/i.test(e);})) return false;
+    if(tod&&s.ti&&s.ti.indexOf(tod)===-1) return false;
+    return true;
+  });
+  var fMap={citrus:['Цитрус','Лимон','Апельсин','Тропик','Ананас','Манго'],
+    sweet:['Сладость','Конфеты','Ваниль','Черника','Ягоды','Шоколад','Сливки'],
+    earth:['Земля','Дерево','Хэш','Сосна','Специи','Анис'],
+    fuel:['Дизель','Химия']};
+  var fl2=fMap[flav]||[];
+  cands=cands.map(function(s){
+    var sc=fl2.filter(function(f){return s.fl.some(function(sf){return sf.includes(f);});}).length;
+    if(s.pop) sc+=0.5;
+    return {s:s,sc:sc};
+  }).sort(function(a,b){return b.sc-a.sc;}).slice(0,4);
+  if(!cands.length) cands=S.filter(function(s){return s.nv==='ok'&&s.pop;}).slice(0,3).map(function(s){return {s:s,sc:1};});
+  var why={energy:'Отличный энергетический эффект для активности и творчества',
+    social:'Поднимающий разговорчивый эффект — идеально для общения',
+    relax:'Расслабляющий эффект без тяжёлой сонливости',
+    sleep:'Мощный седативный эффект, помогает уснуть и снять боль'};
+  document.getElementById('qresult-cards').innerHTML=cands.map(function(item){
+    var s=item.s,idx=S.indexOf(s);
+    return '<div class="quiz-result-card" onclick="document.querySelectorAll(\'.nav-tab\')[0].click();setTimeout(function(){openDet('+idx+')},100)">'
+      +'<div class="qr-name">'+s.n+(s.aw&&s.aw.length?' 🏆':'')+'</div>'
+      +'<div class="qr-why">'+s.or+' · THC '+s.thc[0]+'–'+s.thc[1]+'%<br>'
+      +(why[mood]||'Сбалансированный эффект')+'. Вкус: '+s.fl.slice(0,3).join(', ')+'</div>'
+      +'</div>';
+  }).join('');
+  document.getElementById('qresult').classList.add('show');
+}
+
+function restartQuiz(){
+  qA={};qStep=0;
+  document.getElementById('qresult').classList.remove('show');
+  document.querySelectorAll('.quiz-dot').forEach(function(d){d.classList.remove('done');});
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.quiz-opt').forEach(function(b){b.classList.remove('picked');});
+  document.getElementById('qs0').classList.add('active');
+}
+
+render();
+</script>
+</body>
+</html>
